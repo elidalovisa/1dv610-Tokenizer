@@ -4,11 +4,11 @@
   "description": "Laboration 2 - A parser",
   "type": "module",
   "main": "src/app.js",
-  "scripts": { 
+  "scripts": {
     "start": "node src/ui/app.js",
     "lint": "npx eslint ./src || exit 0",
     "lint:fix": "npx eslint ./src --fix || exit 0"
-      },
+  },
   "repository": {
     "type": "git",
     "url": "git@gitlab.lnu.se:1dv610/student/es222vs/l2.git"
