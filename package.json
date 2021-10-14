@@ -1,0 +1,38 @@
+{
+  "name": "laboration-2",
+  "version": "1.0.0",
+  "description": "Laboration 2 - A parser",
+  "type": "module",
+  "main": "src/app.js",
+  "scripts": { 
+    "start": "node src/ui/app.js",
+    "lint": "npx eslint ./src || exit 0",
+    "lint:fix": "npx eslint ./src --fix || exit 0"
+      },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.lnu.se:1dv610/student/es222vs/l2.git"
+  },
+  "contributors": [
+    "Elida Arrechea <es222vs@student.lnu.se>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@lnu/eslint-config": "^1.1.2",
+    "eslint": "^7.17.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsdoc": "^30.7.13",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "jest": "^27.2.2"
+  },
+  "eslintConfig": {
+    "extends": "@lnu"
+  }
+}
