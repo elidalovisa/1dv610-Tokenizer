@@ -91,7 +91,9 @@ export class Tokenizer {
       regex: this.tokenTypes[i].regex,
       tokenType: this.tokenTypes[i].type
     }
-    this.showActiveTokenForUser()
+    return this.activeToken
+  //  console.log(this.activeToken)
+   this.showActiveTokenForUser()
   }
 
   handleUserInput() {
@@ -153,7 +155,7 @@ export class Tokenizer {
         tokenType: 'END'
       }
       this.hasEndToken = true
-      this.showActiveTokenForUser()
+  //    this.showActiveTokenForUser()
       return true
     } else {
       return
