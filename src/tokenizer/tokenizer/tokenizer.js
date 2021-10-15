@@ -126,6 +126,7 @@ export class Tokenizer {
     this.input = this.input.replace(this.activeToken.value, '')
     this.input = this.input.trim()
     this.handleUserInput()
+    return this.activeToken
   }
 
 

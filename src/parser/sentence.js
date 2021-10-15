@@ -8,38 +8,48 @@
 
 export class Sentence {
 
+
   constructor(tokenizer) {
     this.tokenizer = tokenizer
+    this.oneSentenceArray = []
   }
 
   getFirstToken() {
-    return this.tokenizer.startTokenizer()
+    const firstToken = this.tokenizer.startTokenizer()
+    if (this.checkIfTokenIsValid(firstToken)) {
+      this.addTokenToSentence(firstToken)
+    }
+  }
+
+  // Check if token is WORD or DOT or END, return true
+  checkIfTokenIsValid(token) {
+    if (token.tokenType === 'Word' || token.tokenType == 'Dot') {
+      return true
+    }
   }
 
   //check that token is word or dot and add to array
-    addTokenToSentence(){
-
-    }
-
-
-  checkSentence() {
-    const oneSentenceArray = []
-    const firstToken = this.getFirstToken()
-    oneSentenceArray.push(firstToken)
-    let test1 = this.tokenizer.startTokenizer()
-    console.log(test1.value + 'test1')
-    console.log(this.tokenizer.activeToken)
-    let test2 = this.tokenizer.getNextToken()
-    let test3 = this.tokenizer.getNextToken()
-    let test4 = this.tokenizer.getNextToken()
-    let test5 = this.tokenizer.getNextToken()
-    // console.log(hej)
-    //console.log(test2.value)
-    // console.log(test3)
-    //console.log(test4)
-    //  console.log(test5)
+  addTokenToSentence(token) {
+    this.checkIfTokenIsValid(token)
+    this.oneSentenceArray.push(token)
   }
 
-  //Check for word and dot = a sentence
-  //Throw error if END or other
+  getTokenToSentence() {
+    this.getFirstToken()
+    let token = {}
+    while (token.tokenType !== 'END') {
+      token = this.tokenizer.getNextToken()
+      if(!this.checkIfTokenIsValid(token)) {
+        //Throw error
+        console.log('Error: not valid token.')
+      }
+
+      this.addTokenToSentence(token)
+    }
+    //Check for word and dot = a sentence
+    //Throw error if END or other
+    console.log(this.oneSentenceArray)
+
+  }
+
 }

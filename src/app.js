@@ -20,12 +20,13 @@ const main = async () => {
     const grammar = new Grammar('Word')
     const tokenTypeWord = new TokenType('Word', /^[\w|åäöÅÄÖ]+/g)
     const tokenTypeDot = new TokenType('Dot', /^\./g)
+
     grammar.add(tokenTypeWord)
     grammar.add(tokenTypeDot)
 
     const tokenizer = new Tokenizer(grammar, 'Hej jag.')
     const sentence = new Sentence(tokenizer)
-sentence.checkSentence()
+sentence.getTokenToSentence()
     // const run = new Run(tokenizer)
     // run.runTokenizer()
   } catch (error) {
