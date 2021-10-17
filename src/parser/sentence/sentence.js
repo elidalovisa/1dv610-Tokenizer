@@ -44,6 +44,7 @@ export class Sentence {
   }
 
   getSentence() {
+    this.oneSentence = ''
     this.getFirstToken()
     let token = {}
     while (token.tokenType !== 'Dot') {
@@ -54,22 +55,15 @@ export class Sentence {
       }
       this.addTokenToSentence(token)
     }
-
-
     //Check for word and dot = a sentence
     //Throw error if END or other
     this.removeSentence()
-   /* if(this.tokenizer.input === '') {
-      return false
-    }  */
     return this.oneSentence
-
   }
 
   removeSentence() {
     this.sentenceToRemove.toString()
     this.tokenizer.input = this.tokenizer.input.replace(this.sentenceToRemove, '')
     this.tokenizer.input = this.tokenizer.input.substring(2) //remove dot and whitespace first in string
-    console.log(this.tokenizer.input)
   }
 }

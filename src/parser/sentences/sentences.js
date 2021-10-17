@@ -10,22 +10,18 @@ import { Sentence } from '../sentence/sentence.js'
 
 export class Sentences {
 
-  constructor() {
+  constructor(tokenizer) {
+    this.tokenizer = tokenizer
     this.sentencesArray = []
-    this.sentenseParser = new Sentence()
+    this.sentenseParser = new Sentence(this.tokenizer)
   }
 
-  getOneSentence(){
-    let test1 = this.sentenseParser.getSentence()
-      test1 = this.sentenseParser.getSentence()
-      this.sentencesArray.push(test1)
-    
-
-   //let test2 = this.sentenseParser.getSentence()
-    this.sentencesArray.push(test1)
-    this.sentencesArray.push(test2)
-
+  getAllSentences() {
+    while (this.tokenizer.input !== '') {
+      let fetchedSentence = this.sentenseParser.getSentence()
+      console.log(fetchedSentence)
+      this.sentencesArray.push(fetchedSentence)
+    }
+    console.log(this.sentencesArray)
   }
-
- 
 }

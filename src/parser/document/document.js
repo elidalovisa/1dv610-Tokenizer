@@ -34,20 +34,14 @@ import { Sentences } from '../sentences/sentences.js'
     grammar.add(tokenTypeWord)
     grammar.add(tokenTypeDot)    
     this.tokenizer = new Tokenizer(grammar, string)
-    this.getOneSentence()
-    this.getOneSentence()
+    this.getAllSentences()
+  
+    //this.getOneSentence()
   }
 
 getAllSentences() {
-  let sentence = new Sentence(this.tokenizer)
-  let test = sentence.getSentence()
-  console.log(test)
-  let test2 = sentence.getSentence()
-  console.log(test2)
-  while(!test) {
-    test = sentence.getSentence()
-    console.log(test)
-  }
+  let sentences = new Sentences(this.tokenizer)
+  let test = sentences.getAllSentences()
 }
 
   getOneSentence() {
@@ -55,8 +49,8 @@ getAllSentences() {
     sentence = new Sentence(this.tokenizer)
     let test = sentence.getSentence()
     console.log(test)
-    if(test === false) {
-      console.log('false')
+    if(!this.tokenizer.input === '') {
+      console.log('empty input')
     }
   }
 
