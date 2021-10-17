@@ -19,42 +19,38 @@ import { Sentences } from '../sentences/sentences.js'
  * @version 1.0.0
  */
 
- export class Document {
+export class Document {
 
   constructor() {
-  this.tokenizer = {}
+    this.tokenizer = {}
+    this.document = []
   }
-
-
 
   parse(string) {
     const grammar = new Grammar('Word')
     const tokenTypeWord = new TokenType('Word', /^[\w|åäöÅÄÖ]+/g)
     const tokenTypeDot = new TokenType('Dot', /^\./g)
     grammar.add(tokenTypeWord)
-    grammar.add(tokenTypeDot)    
+    grammar.add(tokenTypeDot)
     this.tokenizer = new Tokenizer(grammar, string)
-    this.getAllSentences()
-  
-    //this.getOneSentence()
+    this.getSentences()
   }
 
-getAllSentences() {
-  let sentences = new Sentences(this.tokenizer)
-  let test = sentences.getAllSentences()
-}
-
-  getOneSentence() {
-    let sentence = new Sentence(this.tokenizer)
-    sentence = new Sentence(this.tokenizer)
-    let test = sentence.getSentence()
-    console.log(test)
-    if(!this.tokenizer.input === '') {
-      console.log('empty input')
-    }
+  getSentences() {
+    const sentences = new Sentences(this.tokenizer)
+    this.document = sentences.getAllSentences()
+    console.log(this.document)
+    this.getEndToken()
   }
 
-  
+  getEndToken() {
+    this.tokenizer.getEndToken()
+    let endToken = this.tokenizer.getActiveToken()
+    endToken = endToken.tokenType
+    this.document.push(endToken)
+    console.log(this.document)
+  }
+
 
   // call get sentences?
   // -> that call sentence?

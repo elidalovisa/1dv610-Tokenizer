@@ -13,15 +13,15 @@ export class Sentences {
   constructor(tokenizer) {
     this.tokenizer = tokenizer
     this.sentencesArray = []
-    this.sentenseParser = new Sentence(this.tokenizer)
+    this.sentenceParser = new Sentence(this.tokenizer)
   }
 
   getAllSentences() {
     while (this.tokenizer.input !== '') {
-      let fetchedSentence = this.sentenseParser.getSentence()
-      console.log(fetchedSentence)
+      let fetchedSentence = this.sentenceParser.getSentence()
       this.sentencesArray.push(fetchedSentence)
     }
-    console.log(this.sentencesArray)
+    
+    return this.sentencesArray
   }
 }

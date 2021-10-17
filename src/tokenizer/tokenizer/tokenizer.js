@@ -96,6 +96,10 @@ export class Tokenizer {
    this.showActiveTokenForUser()
   }
 
+  getActiveToken() {
+    return this.activeToken
+  }
+
   handleUserInput() {
     let countNull = 0
     let matchArray = []
