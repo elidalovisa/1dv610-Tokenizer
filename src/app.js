@@ -9,7 +9,10 @@ import { Run } from './ui/run.js'
 import { Tokenizer } from './tokenizer/tokenizer/tokenizer.js'
 import { Grammar } from './tokenizer/grammar/grammar.js'
 import { TokenType } from './tokenizer/grammar/tokenType.js'
-import { Sentence } from './parser/sentence.js'
+import { Sentence } from './parser/sentence/sentence.js'
+import { Sentences } from './parser/sentences/sentences.js'
+import { Document } from './parser/document/document.js'
+import { Question } from './parser/sentence/question.js'
 
 
 /**
@@ -24,9 +27,15 @@ const main = async () => {
     grammar.add(tokenTypeWord)
     grammar.add(tokenTypeDot)
 
-    const tokenizer = new Tokenizer(grammar, 'Hej jag.')
+    const tokenizer = new Tokenizer(grammar, 'Hej jag. Heter Elida.')
     const sentence = new Sentence(tokenizer)
-sentence.getTokenToSentence()
+    const sentences = new Sentences()
+    const document = new Document()
+    const question = new Question()
+//sentence.getSentence()
+//sentences.getOneSentence()
+document.parse('Hej jag. heter Elida.')
+//question.getSentence()
     // const run = new Run(tokenizer)
     // run.runTokenizer()
   } catch (error) {
