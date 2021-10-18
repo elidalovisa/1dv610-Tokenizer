@@ -10,6 +10,7 @@ export class Sentence {
 
   constructor(tokenizer) {
     this.tokenizer = tokenizer
+    this.sentenceString = []
     this.oneSentence = ''
     this.sentenceToRemove = ''
     this.sentence = {
@@ -32,26 +33,34 @@ export class Sentence {
     }
   }
 
+
   addTokenToSentence(token) {
     this.checkIfTokenIsValid(token)
+
+    let createSentence = token.value + ' '
+    this.sentenceString += createSentence
+
+    if(token.value == '!' || token.value == '?') {
+      this.sentenceString=  this.sentenceString.substring(0, this.sentenceString.length - 2)
+      createSentence = token.value + ' '
+      this.sentenceString = this.sentenceString.trim()
+      this.sentenceString += createSentence
+    }
+
     let createString = token.tokenType + '("' + token.value + '")' + ', '
+  
+   
     this.oneSentence += createString
     this.sentence = {
       type: token.tokenType,
-      words: this.oneSentence
+      words: this.oneSentence,
+      sentence: this.sentenceString
     }
     this.removeInput(token)
   }
 
-  /*addTokenToSentence(token) {  // Change to an object?
-    this.checkIfTokenIsValid(token)
-    let createString = token.tokenType + '("' + token.value + '")' + ', '
-    this.oneSentence += createString
-    this.removeInput(token)
-  }*/
-
   removeInput(token) {
-    let removeInput = token.value + ''
+    let removeInput = token.value + ' '
     this.sentenceToRemove += removeInput
   }
 

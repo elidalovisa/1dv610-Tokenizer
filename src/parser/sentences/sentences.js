@@ -58,7 +58,7 @@ export class Sentences {
 
   getAllSentences() {
     while (this.tokenizer.input !== '') {
-      console.log(this.dotParser)
+      console.log(this.dotParser.sentence)
       let fetchedSentences = this.dotParser.getSentenceAllTypes()
       if (fetchedSentences !== undefined) {
         this.sentencesArray.push(fetchedSentences)
