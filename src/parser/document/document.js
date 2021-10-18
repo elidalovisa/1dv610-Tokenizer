@@ -17,8 +17,9 @@ import { Sentences } from '../sentences/sentences.js'
 
 export class Document {
 
-  constructor(tokenizer) {
+  constructor(tokenizer, sentences) {
     this.tokenizer = tokenizer
+    this.sentences = sentences
     this.document = []
   }
 
@@ -27,8 +28,7 @@ export class Document {
   }
 
   getAllSentencesDot() {
-    const sentences = new Sentences(this.tokenizer)
-    this.document = sentences.getAllSentences()
+    this.document = this.sentences.getAllSentences()
     this.getEndToken()
   }
 
@@ -39,8 +39,4 @@ export class Document {
     this.document.push(endToken)
     console.log(this.document)
   }
-
-  // Get all sentences
-  // get senetces !
-  // get sentences ?
 }

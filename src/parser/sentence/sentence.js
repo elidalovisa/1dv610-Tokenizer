@@ -50,8 +50,6 @@ export class Sentence {
       }
       this.addTokenToSentence(token)
     }
-    //Check for word and dot = a sentence
-    //Throw error if END or other
     this.removeSentence()
     return this.oneSentence
   }
@@ -59,6 +57,6 @@ export class Sentence {
   removeSentence() {
     this.sentenceToRemove.toString()
     this.tokenizer.input = this.tokenizer.input.replace(this.sentenceToRemove, '')
-    this.tokenizer.input = this.tokenizer.input.substring(2) // remove dot and whitespace first in string
+    this.tokenizer.input = this.tokenizer.input.substring(2)
   }
 }

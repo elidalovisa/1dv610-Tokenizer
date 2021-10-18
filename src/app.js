@@ -9,10 +9,10 @@ import { Run } from './ui/run.js'
 import { Tokenizer } from './tokenizer/tokenizer/tokenizer.js'
 import { Grammar } from './tokenizer/grammar/grammar.js'
 import { TokenType } from './tokenizer/grammar/tokenType.js'
-import { Sentence } from './parser/sentence/sentence.js'
 import { Sentences } from './parser/sentences/sentences.js'
 import { Document } from './parser/document/document.js'
 import { Question } from './parser/sentence/question.js'
+import { Dot } from './parser/sentence/dot.js'
 
 
 /**
@@ -30,16 +30,14 @@ const main = async () => {
     grammar.add(tokenTypeQuestion)
 
     const tokenizer = new Tokenizer(grammar, 'Hej jag. vad heter du? hej då. Hej? Hejsan.')
-    //const sentence = new Sentence(tokenizer)
-    //const sentences = new Sentences()
-    const document = new Document(tokenizer)
-    //const question = new Question(tokenizer)
-    //sentence.getSentence()
-    //sentences.getOneSentence()
-    document.parse()
-    //question.getSentenceQuestion()
-    //question.getSentenceQuestion()
+    const dotParser = new Dot(tokenizer)
+    const questionParser = new Question(tokenizer)
+    const sentences = new Sentences(tokenizer, dotParser, questionParser )
+   
+    const document = new Document(tokenizer, sentences)
 
+    document.parse()
+  
     // const run = new Run(tokenizer)
     // run.runTokenizer()
   } catch (error) {

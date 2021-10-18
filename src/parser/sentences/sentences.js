@@ -11,20 +11,19 @@ import { Dot } from '../sentence/dot.js'
 
 export class Sentences {
 
-  constructor(tokenizer) {
+  constructor(tokenizer, dotParser, questionParser) { // add all objects in constructor?
     this.tokenizer = tokenizer
     this.sentencesArray = []
     this.sentencesArrayQuestion = []
     this.sentencesArrayDot = []
-   // this.sentenceParser = new Sentence(this.tokenizer)
-    this.sentenceParserDot = new Dot(this.tokenizer)
-    this.sentenceParserQuestion = new Question(this.tokenizer)
+    this.dotParser = dotParser
+    this.questionParser = questionParser
 
   }
 
   getAllSentencesDot() {
     while (this.tokenizer.input !== '') {
-      let fetchedSentenceDot = this.sentenceParserDot.getSentenceDot()
+      let fetchedSentenceDot = this.dotParser.getSentenceDot()
       if (fetchedSentenceDot !== undefined) {
         this.sentencesArrayDot.push(fetchedSentenceDot)
       }
@@ -34,7 +33,7 @@ export class Sentences {
 
   getAllSentencesQuestion() {
     while (this.tokenizer.input !== '') {
-      let fetchedSentenceQuestion = this.sentenceParserQuestion.getSentenceQuestion()
+      let fetchedSentenceQuestion = this.questionParser.getSentenceQuestion()
       if (fetchedSentenceQuestion !== undefined) {
         this.sentencesArrayQuestion.push(fetchedSentenceQuestion)
       }
@@ -44,7 +43,7 @@ export class Sentences {
 
   getAllSentences() {
     while (this.tokenizer.input !== '') {
-      let fetchedSentences = this.sentenceParserDot.getSentenceAllTypes()
+      let fetchedSentences = this.dotParser.getSentenceAllTypes()
       console.log(fetchedSentences )
       if (fetchedSentences !== undefined) {
         this.sentencesArray.push(fetchedSentences)
