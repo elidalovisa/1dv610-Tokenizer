@@ -50,11 +50,11 @@ export class Sentence {
     let token = {}
     while (token.tokenType !== 'Dot') {
       token = this.tokenizer.getNextToken()
-     if (!this.checkIfTokenIsValid(token)) {
-        continue
-      } 
-      this.addTokenToSentence(token) 
-    } 
+      if (!this.checkIfTokenIsValid(token)) {
+        return
+      }
+      this.addTokenToSentence(token)
+    }
     //Check for word and dot = a sentence
     //Throw error if END or other
     this.removeSentence()

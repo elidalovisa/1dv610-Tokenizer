@@ -17,10 +17,9 @@ export class Question extends Sentence {
     let token = {}
     while (token.tokenType !== 'Question') {
       token = this.tokenizer.getNextToken()
-   /*   if (!this.checkIfTokenIsValid(token)) {
-        //Throw error
-        console.log('Error: not valid token.')
-      } */
+    if (!this.checkIfTokenIsValid(token)) {
+        return
+      } 
       this.addTokenToSentence(token)
     }
     this.removeSentence()

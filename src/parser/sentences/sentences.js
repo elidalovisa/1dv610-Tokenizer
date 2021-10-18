@@ -19,29 +19,30 @@ export class Sentences {
     this.sentenceParserQuestion = new Question(this.tokenizer)
   }
 
-  getAllSentences() {
-if(this.sentenceParserDot === 1) { // If not a dot
-console.log('question')
-}
-
-  /*  while (this.tokenizer.input !== '') {
-
-      if (token.tokenType === 'Word' || token.tokenType == 'Dot') {
-        let fetchedSentenceDot = this.sentenceParserDot.getSentenceDot()
-        this.sentencesArrayAll.push(fetchedSentenceDot)
-      }
-      if (token.tokenType === 'Word' || token.tokenType === 'Question') {
-        let fetchedSentenceQuestion = this.sentenceParserQuestion.getSentenceQuestion()
-        this.sentencesArrayAll.push(fetchedSentenceQuestion)
-     }
-    } */
-  }
-
   getAllSentencesDot() {
     while (this.tokenizer.input !== '') {
       let fetchedSentenceDot = this.sentenceParserDot.getSentenceDot()
       this.sentencesArrayDot.push(fetchedSentenceDot)
     }
+    console.log(this.sentenceArrayDot)
     return this.sentencesArrayDot
+  }
+
+  getAllSentencesQuestion() {
+    while (this.tokenizer.input !== '') {
+      let fetchedSentenceQuestion = this.sentenceParserQuestion.getSentenceQuestion()
+      this.sentencesArrayDot.push(fetchedSentenceQuestion)
+    }
+    return this.sentencesArrayDot
+  }
+
+  getAllSentences() {
+    while (this.tokenizer.input !== '') {
+    let allSentences =  this.sentenceParserDot.getAllSentences()
+this.sentenceArrayAll.push(allSentences)
+//this.sentenceArrayAll.push(question)
+    }
+    console.log(this.sentenceArrayAll)
+    return this.sentenceArrayAll
   }
 }
