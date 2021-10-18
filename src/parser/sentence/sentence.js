@@ -15,7 +15,7 @@ export class Sentence {
     this.sentenceToRemove = ''
     this.sentence = {
       type: '',
-      words: '',
+      tokens: '',
       sentence: '',
     }
   }
@@ -34,27 +34,28 @@ export class Sentence {
   }
 
 
-  addTokenToSentence(token) {
-    this.checkIfTokenIsValid(token)
-
+  createSentenceString(token) {
     let createSentence = token.value + ' '
     this.sentenceString += createSentence
 
-    if(token.value == '!' || token.value == '?') {
+    if(token.value == '!' || token.value == '?' || token.value == '.') {
       this.sentenceString=  this.sentenceString.substring(0, this.sentenceString.length - 2)
       createSentence = token.value + ' '
       this.sentenceString = this.sentenceString.trim()
       this.sentenceString += createSentence
     }
+    return this.sentenceString.trim()
+  }
 
+  addTokenToSentence(token) {
+    this.checkIfTokenIsValid(token)
+    let sentenceForObj = this.createSentenceString(token)
     let createString = token.tokenType + '("' + token.value + '")' + ', '
-  
-   
     this.oneSentence += createString
     this.sentence = {
       type: token.tokenType,
-      words: this.oneSentence,
-      sentence: this.sentenceString
+      tokens: this.oneSentence,
+      sentence: sentenceForObj
     }
     this.removeInput(token)
   }
