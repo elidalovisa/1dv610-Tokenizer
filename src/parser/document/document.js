@@ -7,10 +7,6 @@
 
 //getSentencesExplanationMark
 
-import { Grammar } from '../../tokenizer/grammar/grammar.js'
-import { TokenType } from '../../tokenizer/grammar/tokenType.js'
-import { Tokenizer } from '../../tokenizer/tokenizer/tokenizer.js'
-import { Sentence } from '../sentence/sentence.js'
 import { Sentences } from '../sentences/sentences.js'
 /**
  * A document  class.

@@ -1,7 +1,7 @@
-// Klass som anropas för att kolla efter meningar, när inga fler meningar kommer tillbaka är meningen klar END token
-
 import { Sentence } from '../sentence/sentence.js'
 import { Question } from '../sentence/question.js'
+import { Dot } from '../sentence/dot.js'
+
 /**
  * A class that collect sentences.
  *
@@ -13,12 +13,13 @@ export class Sentences {
 
   constructor(tokenizer) {
     this.tokenizer = tokenizer
-    this.sentenceArrayAll = []
+    this.sentencesArray = []
     this.sentencesArrayQuestion = []
     this.sentencesArrayDot = []
-    this.test3 = []
-    this.sentenceParserDot = new Sentence(this.tokenizer)
+   // this.sentenceParser = new Sentence(this.tokenizer)
+    this.sentenceParserDot = new Dot(this.tokenizer)
     this.sentenceParserQuestion = new Question(this.tokenizer)
+
   }
 
   getAllSentencesDot() {
@@ -43,12 +44,12 @@ export class Sentences {
 
   getAllSentences() {
     while (this.tokenizer.input !== '') {
-      let fetchedSentenceQuestion = this.sentenceParserDot.getSentenceAllTypes()
-      if (fetchedSentenceQuestion !== undefined) {
-        this.sentencesArrayQuestion.push(fetchedSentenceQuestion)
+      let fetchedSentences = this.sentenceParserDot.getSentenceAllTypes()
+      console.log(fetchedSentences )
+      if (fetchedSentences !== undefined) {
+        this.sentencesArray.push(fetchedSentences)
       }
     }
-    console.log(this.sentencesArrayQuestion)
-    return this.sentencesArrayQuestion
+    return this.sentencesArray
   }
 }

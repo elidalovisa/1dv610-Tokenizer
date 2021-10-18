@@ -1,12 +1,10 @@
 
 /**
- * A sentence class.
+ * A interface for a sentence.
  *
  * @author Elida Arrechea <es222vs@student.lnu.se>
  * @version 1.0.0
  */
-
-
 
 export class Sentence {
 
@@ -23,20 +21,12 @@ export class Sentence {
     }
   }
 
-  // Check if token is WORD or DOT return true
-  checkIfTokenIsValid(token) {
-    if (token.tokenType === 'Word' || token.tokenType == 'Dot') {
-      return true
-    }
-  }
-
   checkIfTokenIsValidAllTypes(token) {
     if (token.tokenType === 'Word' || token.tokenType == 'Dot' || token.tokenType == 'Question' ) {
       return true
     }
   }
 
-  //check that token is word or dot and add to string
   addTokenToSentence(token) {
     this.checkIfTokenIsValid(token)
     let createString = token.tokenType + '("' + token.value + '")' + ', '
@@ -56,23 +46,6 @@ export class Sentence {
     while (token.tokenType !== 'Dot' && token.tokenType !== 'Question') {
       token = this.tokenizer.getNextToken()
       if (!this.checkIfTokenIsValidAllTypes(token)) {
-        return
-      }
-      this.addTokenToSentence(token)
-    }
-    //Check for word and dot = a sentence
-    //Throw error if END or other
-    this.removeSentence()
-    return this.oneSentence
-  }
-
-  getSentenceDot() {
-    this.oneSentence = ''
-    this.getFirstToken()
-    let token = {}
-    while (token.tokenType !== 'Dot') {
-      token = this.tokenizer.getNextToken()
-      if (!this.checkIfTokenIsValid(token)) {
         return
       }
       this.addTokenToSentence(token)
