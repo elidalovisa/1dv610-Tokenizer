@@ -43,18 +43,18 @@ export class Sentence {
     this.sentenceToRemove += removeInput
   }
 
-  getSentenceQuestion() {
+
+  getSentenceDot() {
     this.oneSentence = ''
     this.getFirstToken()
     let token = {}
     while (token.tokenType !== 'Dot') {
       token = this.tokenizer.getNextToken()
-      if (!this.checkIfTokenIsValid(token)) {
-        //Throw error
-        console.log('Error: not valid token.')
-      }
-      this.addTokenToSentence(token)
-    }
+     if (!this.checkIfTokenIsValid(token)) {
+        continue
+      } 
+      this.addTokenToSentence(token) 
+    } 
     //Check for word and dot = a sentence
     //Throw error if END or other
     this.removeSentence()

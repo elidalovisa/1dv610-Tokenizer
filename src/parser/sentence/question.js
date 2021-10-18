@@ -15,21 +15,16 @@ export class Question extends Sentence {
     this.oneSentence = ''
     this.getFirstToken()
     let token = {}
-   // if(token.tokenType === 'Question') {
-   while (token.tokenType !== 'Question') {
+    while (token.tokenType !== 'Question') {
       token = this.tokenizer.getNextToken()
-      if (!this.checkIfTokenIsValid(token)) {
+   /*   if (!this.checkIfTokenIsValid(token)) {
         //Throw error
         console.log('Error: not valid token.')
-      } 
+      } */
       this.addTokenToSentence(token)
-   }
-    //Check for word and dot = a sentence
-    //Throw error if END or other
+    }
     this.removeSentence()
     console.log(this.oneSentence)
     return this.oneSentence
   }
-
-
 }

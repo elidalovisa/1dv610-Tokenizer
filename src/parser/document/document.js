@@ -21,24 +21,18 @@ import { Sentences } from '../sentences/sentences.js'
 
 export class Document {
 
-  constructor() {
-    this.tokenizer = {}
+  constructor(tokenizer) {
+    this.tokenizer = tokenizer
     this.document = []
   }
 
-  parse(string) {
-    const grammar = new Grammar('Word')
-    const tokenTypeWord = new TokenType('Word', /^[\w|åäöÅÄÖ]+/g)
-    const tokenTypeDot = new TokenType('Dot', /^\./g)
-    grammar.add(tokenTypeWord)
-    grammar.add(tokenTypeDot)
-    this.tokenizer = new Tokenizer(grammar, string)
-    this.getSentences()
+  parse() {
+    this.getAllSentencesDot()
   }
 
-  getSentences() {
+  getAllSentencesDot() {
     const sentences = new Sentences(this.tokenizer)
-    this.document = sentences.getAllSentences()
+    this.document = sentences.getAllSentencesDot()
     this.getEndToken()
   }
 
