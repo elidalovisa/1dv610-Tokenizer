@@ -12,6 +12,11 @@ export class Sentence {
     this.tokenizer = tokenizer
     this.oneSentence = ''
     this.sentenceToRemove = ''
+    this.sentence = {
+      type: '',
+      words: '',
+      sentence: '',
+    }
   }
 
   getFirstToken() {
@@ -31,8 +36,19 @@ export class Sentence {
     this.checkIfTokenIsValid(token)
     let createString = token.tokenType + '("' + token.value + '")' + ', '
     this.oneSentence += createString
+    this.sentence = {
+      type: token.tokenType,
+      words: this.oneSentence
+    }
     this.removeInput(token)
   }
+
+  /*addTokenToSentence(token) {  // Change to an object?
+    this.checkIfTokenIsValid(token)
+    let createString = token.tokenType + '("' + token.value + '")' + ', '
+    this.oneSentence += createString
+    this.removeInput(token)
+  }*/
 
   removeInput(token) {
     let removeInput = token.value + ''
@@ -58,5 +74,9 @@ export class Sentence {
     this.sentenceToRemove.toString()
     this.tokenizer.input = this.tokenizer.input.replace(this.sentenceToRemove, '')
     this.tokenizer.input = this.tokenizer.input.substring(2)
+  }
+
+  getSentence() {
+    return this.sentence
   }
 }

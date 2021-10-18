@@ -56,6 +56,5 @@ export class Document {
     let endToken = this.tokenizer.getActiveToken()
     endToken = endToken.tokenType
     this.document.push(endToken)
-    console.log(this.document)
   }
 }
