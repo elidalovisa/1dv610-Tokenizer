@@ -18,10 +18,10 @@ export class Sentences {
 
   getAllSentences() {
     while (this.tokenizer.input !== '') {
-      let fetchedSentence = this.sentenceParser.getSentence()
+      let fetchedSentence = this.sentenceParser.getSentenceQuestion()
       this.sentencesArray.push(fetchedSentence)
     }
-    
+
     return this.sentencesArray
   }
 }

@@ -39,7 +39,6 @@ export class Document {
   getSentences() {
     const sentences = new Sentences(this.tokenizer)
     this.document = sentences.getAllSentences()
-    console.log(this.document)
     this.getEndToken()
   }
 
@@ -51,7 +50,7 @@ export class Document {
     console.log(this.document)
   }
 
-
-  // call get sentences?
-  // -> that call sentence?
+  // Get all sentences
+  // get senetces !
+  // get sentences ?
 }

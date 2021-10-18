@@ -23,19 +23,23 @@ const main = async () => {
     const grammar = new Grammar('Word')
     const tokenTypeWord = new TokenType('Word', /^[\w|åäöÅÄÖ]+/g)
     const tokenTypeDot = new TokenType('Dot', /^\./g)
+    const tokenTypeQuestion = new TokenType('Question', (/^\?/g))
 
     grammar.add(tokenTypeWord)
     grammar.add(tokenTypeDot)
+    grammar.add(tokenTypeQuestion)
 
-    const tokenizer = new Tokenizer(grammar, 'Hej jag. Heter Elida.')
+    const tokenizer = new Tokenizer(grammar, 'Hej jag? vad heter du?')
     const sentence = new Sentence(tokenizer)
     const sentences = new Sentences()
-    const document = new Document()
-    const question = new Question()
+    //const document = new Document()
+    const question = new Question(tokenizer)
 //sentence.getSentence()
 //sentences.getOneSentence()
-document.parse('Hej jag. heter Elida.')
-//question.getSentence()
+//document.parse('Hej jag. heter Elida.')
+question.getSentenceQuestion()
+question.getSentenceQuestion()
+
     // const run = new Run(tokenizer)
     // run.runTokenizer()
   } catch (error) {

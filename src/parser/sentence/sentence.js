@@ -43,7 +43,7 @@ export class Sentence {
     this.sentenceToRemove += removeInput
   }
 
-  getSentence() {
+  getSentenceQuestion() {
     this.oneSentence = ''
     this.getFirstToken()
     let token = {}
@@ -64,6 +64,6 @@ export class Sentence {
   removeSentence() {
     this.sentenceToRemove.toString()
     this.tokenizer.input = this.tokenizer.input.replace(this.sentenceToRemove, '')
-    this.tokenizer.input = this.tokenizer.input.substring(2) //remove dot and whitespace first in string
+    this.tokenizer.input = this.tokenizer.input.substring(2) // remove dot and whitespace first in string
   }
 }
