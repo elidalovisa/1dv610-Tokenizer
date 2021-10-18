@@ -30,6 +30,12 @@ export class Sentence {
     }
   }
 
+  checkIfTokenIsValidAllTypes(token) {
+    if (token.tokenType === 'Word' || token.tokenType == 'Dot' || token.tokenType == 'Question' ) {
+      return true
+    }
+  }
+
   //check that token is word or dot and add to string
   addTokenToSentence(token) {
     this.checkIfTokenIsValid(token)
@@ -43,6 +49,22 @@ export class Sentence {
     this.sentenceToRemove += removeInput
   }
 
+  getSentenceAllTypes() {
+    this.oneSentence = ''
+    this.getFirstToken()
+    let token = {}
+    while (token.tokenType !== 'Dot' && token.tokenType !== 'Question') {
+      token = this.tokenizer.getNextToken()
+      if (!this.checkIfTokenIsValidAllTypes(token)) {
+        return
+      }
+      this.addTokenToSentence(token)
+    }
+    //Check for word and dot = a sentence
+    //Throw error if END or other
+    this.removeSentence()
+    return this.oneSentence
+  }
 
   getSentenceDot() {
     this.oneSentence = ''
