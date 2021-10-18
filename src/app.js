@@ -12,6 +12,7 @@ import { TokenType } from './tokenizer/grammar/tokenType.js'
 import { Sentences } from './parser/sentences/sentences.js'
 import { Document } from './parser/document/document.js'
 import { Question } from './parser/sentence/question.js'
+import { Explanation } from './parser/sentence/explanation.js'
 import { Dot } from './parser/sentence/dot.js'
 
 
@@ -24,15 +25,19 @@ const main = async () => {
     const tokenTypeWord = new TokenType('Word', /^[\w|åäöÅÄÖ]+/g)
     const tokenTypeDot = new TokenType('Dot', /^\./g)
     const tokenTypeQuestion = new TokenType('Question', (/^\?/g))
+    const tokenTypeExplanation = new TokenType('Explanation', (/^\!/g))
+
 
     grammar.add(tokenTypeWord)
     grammar.add(tokenTypeDot)
     grammar.add(tokenTypeQuestion)
+    grammar.add(tokenTypeExplanation)
 
-    const tokenizer = new Tokenizer(grammar, 'Hej jag. vad heter du? hej då. Hej? Hejsan.')
+    const tokenizer = new Tokenizer(grammar, 'hej! Vad heter du? Jag heter Elida.')
     const dotParser = new Dot(tokenizer)
     const questionParser = new Question(tokenizer)
-    const sentences = new Sentences(tokenizer, dotParser, questionParser )
+    const explanationParser = new Explanation(tokenizer)
+    const sentences = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
    
     const document = new Document(tokenizer, sentences)
 

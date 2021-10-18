@@ -22,7 +22,7 @@ export class Sentence {
   }
 
   checkIfTokenIsValidAllTypes(token) {
-    if (token.tokenType === 'Word' || token.tokenType == 'Dot' || token.tokenType == 'Question' ) {
+    if (token.tokenType === 'Word' || token.tokenType === 'Dot' || token.tokenType === 'Question' || token.tokenType === 'Explanation') {
       return true
     }
   }
@@ -43,7 +43,7 @@ export class Sentence {
     this.oneSentence = ''
     this.getFirstToken()
     let token = {}
-    while (token.tokenType !== 'Dot' && token.tokenType !== 'Question') {
+    while (token.tokenType !== 'Dot' && token.tokenType !== 'Question' && token.tokenType !== 'Explanation') {
       token = this.tokenizer.getNextToken()
       if (!this.checkIfTokenIsValidAllTypes(token)) {
         return

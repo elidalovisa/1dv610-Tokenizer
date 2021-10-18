@@ -11,13 +11,15 @@ import { Dot } from '../sentence/dot.js'
 
 export class Sentences {
 
-  constructor(tokenizer, dotParser, questionParser) { // add all objects in constructor?
+  constructor(tokenizer, dotParser, questionParser, explanationParser) {
     this.tokenizer = tokenizer
     this.sentencesArray = []
     this.sentencesArrayQuestion = []
+    this.sentencesArrayExplanation = []
     this.sentencesArrayDot = []
     this.dotParser = dotParser
     this.questionParser = questionParser
+    this.explanationParser = explanationParser
 
   }
 
@@ -41,10 +43,22 @@ export class Sentences {
     return this.sentencesArrayQuestion
   }
 
+  
+  getAllSentencesExplanation() {
+    while (this.tokenizer.input !== '') {
+      let fetchedSentenceExplanation = this.explanationParser.getSentenceExplanation()
+      if (fetchedSentenceExplanation !== undefined) {
+        this.sentencesArrayExplanation.push(fetchedSentenceExplanation)
+      }
+    }
+    console.log(this.sentencesArrayExplanation)
+    return this.sentencesArrayExplanation
+  }
+
+
   getAllSentences() {
     while (this.tokenizer.input !== '') {
       let fetchedSentences = this.dotParser.getSentenceAllTypes()
-      console.log(fetchedSentences )
       if (fetchedSentences !== undefined) {
         this.sentencesArray.push(fetchedSentences)
       }

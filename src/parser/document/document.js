@@ -24,11 +24,12 @@ export class Document {
   }
 
   parse() {
-    this.getAllSentencesDot()
+    this.getAllSentences()
   }
 
-  getAllSentencesDot() {
+  getAllSentences() {
     this.document = this.sentences.getAllSentences()
+    console.log(this.document)
     this.getEndToken()
   }
 
