@@ -29,8 +29,26 @@ export class Document {
 
   getAllSentences() {
     this.document = this.sentences.getAllSentences()
-    console.log(this.document)
     this.getEndToken()
+    console.log(this.document)
+  }
+
+  getAllSentencesDot() {
+    this.document = this.sentences.getAllSentencesDot()
+    this.getEndToken()
+    console.log(this.document)
+  }
+
+  getAllSentencesQuestion() {
+    this.document = this.sentences.getAllSentencesQuestion()
+    this.getEndToken()
+    console.log(this.document)
+  }
+
+  getAllSentencesExplanation() {
+    this.document = this.sentences.getAllSentencesExplanation()
+    this.getEndToken()
+    console.log(this.document)
   }
 
   getEndToken() {

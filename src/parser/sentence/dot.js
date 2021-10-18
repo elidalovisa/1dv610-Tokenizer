@@ -11,7 +11,7 @@ export class Dot extends Sentence {
     }
   }
 
-  getSentenceQuestion() {
+  getSentenceDot() {
     this.oneSentence = ''
     this.getFirstToken()
     let token = {}
