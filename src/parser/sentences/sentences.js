@@ -14,7 +14,7 @@ export class Sentences {
   constructor(tokenizer) {
     this.tokenizer = tokenizer
     this.sentenceArrayAll = []
-    this.sentencesArrayDot = []
+    this.sentencesArray = []
     this.sentenceParserDot = new Sentence(this.tokenizer)
     this.sentenceParserQuestion = new Question(this.tokenizer)
   }
@@ -22,18 +22,20 @@ export class Sentences {
   getAllSentencesDot() {
     while (this.tokenizer.input !== '') {
       let fetchedSentenceDot = this.sentenceParserDot.getSentenceDot()
-      this.sentencesArrayDot.push(fetchedSentenceDot)
-    }
-    console.log(this.sentenceArrayDot)
-    return this.sentencesArrayDot
+      if(fetchedSentenceDot !== undefined) {
+        this.sentencesArray.push(fetchedSentenceDot)
+      }    }
+    return this.sentencesArray
   }
 
   getAllSentencesQuestion() {
     while (this.tokenizer.input !== '') {
       let fetchedSentenceQuestion = this.sentenceParserQuestion.getSentenceQuestion()
-      this.sentencesArrayDot.push(fetchedSentenceQuestion)
+      if(fetchedSentenceQuestion !== undefined) {
+        this.sentencesArray.push(fetchedSentenceQuestion)
+      }
     }
-    return this.sentencesArrayDot
+    return this.sentencesArray
   }
 
   getAllSentences() {

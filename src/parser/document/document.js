@@ -32,7 +32,7 @@ export class Document {
 
   getAllSentencesDot() {
     const sentences = new Sentences(this.tokenizer)
-    this.document = sentences.getAllSentencesQuestion()
+    this.document = sentences.getAllSentencesDot()
     this.getEndToken()
   }
 
