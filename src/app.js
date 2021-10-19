@@ -5,15 +5,8 @@
  * @version 1.0.0
  */
 
-import { Run } from './ui/run.js'
-import { Tokenizer } from './tokenizer/tokenizer/tokenizer.js'
-import { Grammar } from './tokenizer/grammar/grammar.js'
-import { TokenType } from './tokenizer/grammar/tokenType.js'
-import { Sentences } from './parser/sentences/sentences.js'
+
 import { Document } from './parser/document/document.js'
-import { Question } from './parser/sentence/question.js'
-import { Explanation } from './parser/sentence/explanation.js'
-import { Dot } from './parser/sentence/dot.js'
 
 
 /**
@@ -21,26 +14,8 @@ import { Dot } from './parser/sentence/dot.js'
  */
 const main = async () => {
   try {
-    const grammar = new Grammar('Word')
-    const tokenTypeWord = new TokenType('Word', /^[\w|åäöÅÄÖ]+/g)
-    const tokenTypeDot = new TokenType('Dot', /^\./g)
-    const tokenTypeQuestion = new TokenType('Question', (/^\?/g))
-    const tokenTypeExplanation = new TokenType('Explanation', (/^\!/g))
-
-
-    grammar.add(tokenTypeWord)
-    grammar.add(tokenTypeDot)
-    grammar.add(tokenTypeQuestion)
-    grammar.add(tokenTypeExplanation)
-
-    const tokenizer = new Tokenizer(grammar, 'hej! Vad heter du? Jag heter Elida. Det är kallt idag. Hejdå!')
-    const dotParser = new Dot(tokenizer)
-    const questionParser = new Question(tokenizer)
-    const explanationParser = new Explanation(tokenizer)
-    const sentences = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
-   
-    const document = new Document(tokenizer, sentences)
-
+ 
+    const document = new Document('hej! Vad heter du? Jag heter Elida. Det är kallt idag. Hejdå!')
     document.parse()
   
     // const run = new Run(tokenizer)

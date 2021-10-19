@@ -19,13 +19,13 @@ export class Dot extends Sentence {
     return firstToken
   }
 
- 
+
   parseSentence(token) {
     this.checkIfTokenIsValid(token)
     this.sentenceStringArray.push(token.value)
     let createString = token.tokenType + '("' + token.value + '")' + ', '
     this.oneSentence += createString
-  this.createSentenceObj(token) 
+    this.createSentenceObj(token)
     this.removeInput(token)
   }
 
@@ -39,7 +39,7 @@ export class Dot extends Sentence {
       token = this.tokenizer.getNextToken()
       if (!this.checkIfTokenIsValid(token)) {
         return
-      } 
+      }
       this.parseSentence(token)
     }
     this.removeSentence()

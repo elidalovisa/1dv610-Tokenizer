@@ -24,7 +24,7 @@ export class Question extends Sentence {
     this.sentenceStringArray.push(token.value)
     let createString = token.tokenType + '("' + token.value + '")' + ', '
     this.oneSentence += createString
-  this.createSentenceObj(token) 
+    this.createSentenceObj(token)
     this.removeInput(token)
   }
 
@@ -35,9 +35,9 @@ export class Question extends Sentence {
     let token = {}
     while (token.tokenType !== 'Question') {
       token = this.tokenizer.getNextToken()
-    if (!this.checkIfTokenIsValid(token)) {
+      if (!this.checkIfTokenIsValid(token)) {
         return
-      } 
+      }
       this.parseSentence(token)
     }
     this.removeSentence()

@@ -8,6 +8,13 @@
 //getSentencesExplanationMark
 
 import { Sentences } from '../sentences/sentences.js'
+import { Tokenizer } from '../../tokenizer/tokenizer/tokenizer.js'
+import { Grammar } from '../../tokenizer/grammar/grammar.js'
+import { TokenType } from '../../tokenizer/grammar/tokenType.js'
+import { Question } from '../sentence/question.js'
+import { Explanation } from '../sentence/explanation.js'
+import { Dot } from '../sentence/dot.js'
+
 /**
  * A document  class.
  *
@@ -17,22 +24,32 @@ import { Sentences } from '../sentences/sentences.js'
 
 export class Document {
 
-  constructor(tokenizer, sentences) {
-    this.tokenizer = tokenizer
-    this.sentences = sentences
+  constructor(stringToParse) {
+    this.stringToParse = stringToParse
+
+    const grammar = new Grammar('Word')
+    const tokenTypeWord = new TokenType('Word', /^[\w|åäöÅÄÖ]+/g)
+    const tokenTypeDot = new TokenType('Dot', /^\./g)
+    const tokenTypeQuestion = new TokenType('Question', (/^\?/g))
+    const tokenTypeExplanation = new TokenType('Explanation', (/^\!/g))
+    grammar.add(tokenTypeWord)
+    grammar.add(tokenTypeDot)
+    grammar.add(tokenTypeQuestion)
+    grammar.add(tokenTypeExplanation)
+    this.tokenizer =  new Tokenizer(grammar, this.stringToParse)
+
+    const dotParser = new Dot(this.tokenizer)
+    const questionParser = new Question(this.tokenizer)
+    const explanationParser = new Explanation(this.tokenizer)
+    this.sentences = new Sentences(this.tokenizer, dotParser, questionParser, explanationParser)
+    
     this.document = []
   }
 
   parse() {
-    this.getAllSentencesQuestion()
-    //console.log("This is %cMy stylish message", "color: yellow; font-style: italic; background-color: blue;padding: 2px");
-    //console.log('\x1b[43mHighlighted');
-  //  console.log('\x1b[36m Hello \x1b[34m Colored \x1b[35m World!');
-console.log('\x1B[31mHello\x1B[34m World');
-console.log('%cHello World','color:blue');
-
-
-
+    this.getAllSentences()
+    console.log('\x1B[31mHello\x1B[34m World')
+    console.log('%cHello World', 'color:blue')
   }
 
   getAllSentences() {
