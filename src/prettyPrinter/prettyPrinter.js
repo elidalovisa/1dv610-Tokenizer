@@ -16,7 +16,7 @@ export class PrettyPrinter {
 
   print() {
     this.getDocumentToStyle()
-  this.styleDocument()
+    this.styleDocument()
   }
 
   getDocumentToStyle() {
@@ -25,18 +25,30 @@ export class PrettyPrinter {
   }
 
   styleDocument() {
-   let document = this.getDocumentToStyle()
-   for(let i = 0; i < document.length; i++) {
-     if(document[i].type === 'Dot') {
+    let document = this.getDocumentToStyle()
+    for (let i = 0; i < document.length; i++) {
+      this.colorDot(document, i)
+      this.colorQuestion(document, i)
+      this.colorExplanation(document, i)
+    }
+  }
+
+  colorDot(document, i) {
+    if (document[i].type === 'Dot') {
       console.log("\u001b[1;35m" + document[i].sentence)
-     } 
-     if(document[i].type === 'Question') {
+    }
+  }
+
+  colorQuestion(document, i) {
+    if (document[i].type === 'Question') {
       console.log("\u001b[1;32m" + document[i].sentence)
-     }
-     if(document[i].type === 'Explanation') {
+    }
+  }
+
+  colorExplanation(document, i) {
+    if (document[i].type === 'Explanation') {
       console.log("\u001b[1;34m" + document[i].sentence)
-     }
-   }
+    }
   }
 
 }
