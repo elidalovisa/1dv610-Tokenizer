@@ -10,7 +10,7 @@ export class Sentence {
 
   constructor(tokenizer) {
     this.tokenizer = tokenizer
-    this.sentenceString = []
+    this.sentenceStringArray = []
     this.oneSentence = ''
     this.sentenceToRemove = ''
     this.sentence = {
@@ -36,19 +36,18 @@ export class Sentence {
 
   addTokenToSentence(token) {
     this.checkIfTokenIsValid(token)
-    this.sentenceString.push(token.value)
+    this.sentenceStringArray.push(token.value)
     let createString = token.tokenType + '("' + token.value + '")' + ', '
     this.oneSentence += createString
-    let flatArray = this.sentenceString.flat()
-    let join = this.sentenceString.join(' ')
+    let flatArray = this.sentenceStringArray.flat()
+    let join = this.sentenceStringArray.join(' ')
     let regex = /\s+([.,!?":])/g
     let finalString = join.replace(regex, '$1')
-  
     this.sentence = {
       type: token.tokenType,
       tokens: this.oneSentence,
-      sentence: flatArray,
-      test: finalString
+      words: flatArray,
+      sentence: finalString    
     }
     this.removeInput(token)
   }
@@ -60,6 +59,7 @@ export class Sentence {
 
   getSentenceAllTypes() {
     this.oneSentence = ''
+    this.sentenceStringArray = []
     this.getFirstToken()
     let token = {}
     while (token.tokenType !== 'Dot' && token.tokenType !== 'Question' && token.tokenType !== 'Explanation') {
