@@ -36,26 +36,27 @@ export class Document {
     grammar.add(tokenTypeDot)
     grammar.add(tokenTypeQuestion)
     grammar.add(tokenTypeExplanation)
-    this.tokenizer =  new Tokenizer(grammar, this.stringToParse)
+    this.tokenizer = new Tokenizer(grammar, this.stringToParse)
 
     const dotParser = new Dot(this.tokenizer)
     const questionParser = new Question(this.tokenizer)
     const explanationParser = new Explanation(this.tokenizer)
     this.sentences = new Sentences(this.tokenizer, dotParser, questionParser, explanationParser)
-    
+
     this.document = []
   }
 
   parse() {
-    this.getAllSentences()
-    console.log('\x1B[31mHello\x1B[34m World')
-    console.log('%cHello World', 'color:blue')
+    let parsedDocument = this.getAllSentences()
+   // console.log('\x1B[31mHello\x1B[34m World')
+   // console.log('%cHello World', 'color:blue')
+    return parsedDocument
   }
 
   getAllSentences() {
     this.document = this.sentences.getAllSentences()
     this.getEndToken()
-    console.log(this.document)
+    return this.document
   }
 
   getAllSentencesDot() {

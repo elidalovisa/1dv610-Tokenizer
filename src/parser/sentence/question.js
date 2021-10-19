@@ -41,7 +41,6 @@ export class Question extends Sentence {
       this.parseSentence(token)
     }
     this.removeSentence()
-    console.log(this.sentence)
     return this.oneSentence
   }
 }

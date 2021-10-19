@@ -76,7 +76,6 @@ export class Sentence {
       this.parseSentence(token)
     }
     this.removeSentence()
-    console.log(this.sentence)
     return this.sentence
   }
 
@@ -84,6 +83,10 @@ export class Sentence {
     this.sentenceToRemove.toString()
     this.tokenizer.input = this.tokenizer.input.replace(this.sentenceToRemove, '')
     this.tokenizer.input = this.tokenizer.input.substring(2)
+  }
+
+  getEndType() {
+    return this.sentence.type
   }
 
   getSentence() {

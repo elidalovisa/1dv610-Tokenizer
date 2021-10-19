@@ -24,7 +24,6 @@ export class Sentences {
   }
 
   getAllSentencesDot() {
-    console.log(this.tokenizer)
     while (this.tokenizer.input !== '') {
       let fetchedSentenceDot = this.dotParser.getSentenceDot()
       if (fetchedSentenceDot !== undefined) {
