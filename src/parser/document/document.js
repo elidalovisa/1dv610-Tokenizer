@@ -48,8 +48,6 @@ export class Document {
 
   parse() {
     let parsedDocument = this.getAllSentences()
-   // console.log('\x1B[31mHello\x1B[34m World')
-   // console.log('%cHello World', 'color:blue')
     return parsedDocument
   }
 

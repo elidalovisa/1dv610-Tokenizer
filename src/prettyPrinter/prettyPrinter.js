@@ -35,19 +35,19 @@ export class PrettyPrinter {
 
   colorDot(document, i) {
     if (document[i].type === 'Dot') {
-      console.log("\u001b[1;35m" + document[i].sentence)
+      console.log("\u001b[1;35m" + i + ' ' + document[i].sentence)
     }
   }
 
   colorQuestion(document, i) {
     if (document[i].type === 'Question') {
-      console.log("\u001b[1;32m" + document[i].sentence)
+      console.log("\u001b[1;32m" + i + ' ' + document[i].sentence)
     }
   }
 
   colorExplanation(document, i) {
     if (document[i].type === 'Explanation') {
-      console.log("\u001b[1;34m" + document[i].sentence)
+      console.log("\u001b[1;34m" + i + ' ' + document[i].sentence)
     }
   }
 
