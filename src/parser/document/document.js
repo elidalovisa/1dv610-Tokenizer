@@ -24,7 +24,15 @@ export class Document {
   }
 
   parse() {
-    this.getAllSentences()
+    this.getAllSentencesDot()
+    //console.log("This is %cMy stylish message", "color: yellow; font-style: italic; background-color: blue;padding: 2px");
+    //console.log('\x1b[43mHighlighted');
+  //  console.log('\x1b[36m Hello \x1b[34m Colored \x1b[35m World!');
+console.log('\x1B[31mHello\x1B[34m World');
+console.log('%cHello World','color:blue');
+
+
+
   }
 
   getAllSentences() {

@@ -11,6 +11,8 @@ export class Sentence {
   constructor(tokenizer) {
     this.tokenizer = tokenizer
     this.sentenceStringArray = []
+    this.flatArray = []
+    this.finalString = ''
     this.oneSentence = ''
     this.sentenceToRemove = ''
     this.sentence = {
@@ -23,7 +25,7 @@ export class Sentence {
   getFirstToken() {
     const firstToken = this.tokenizer.startTokenizer()
     if (this.checkIfTokenIsValidAllTypes(firstToken)) {
-      this.addTokenToSentence(firstToken)
+      this.parseSentence(firstToken)
     }
   }
 
@@ -33,22 +35,26 @@ export class Sentence {
     }
   }
 
-
-  addTokenToSentence(token) {
-    this.checkIfTokenIsValidAllTypes(token)
-    this.sentenceStringArray.push(token.value)
-    let createString = token.tokenType + '("' + token.value + '")' + ', '
-    this.oneSentence += createString
-    let flatArray = this.sentenceStringArray.flat()
+  createSentenceObj(token){
+    this.flatArray = this.sentenceStringArray.flat()
     let join = this.sentenceStringArray.join(' ')
     let regex = /\s+([.,!?":])/g
-    let finalString = join.replace(regex, '$1')
+    this.finalString = join.replace(regex, '$1')
     this.sentence = {
       type: token.tokenType,
       tokens: this.oneSentence,
-      words: flatArray,
-      sentence: finalString    
+      words: this.flatArray,
+      sentence: this.finalString    
     }
+  }
+
+
+  parseSentence(token) {
+   this.checkIfTokenIsValidAllTypes(token)
+    this.sentenceStringArray.push(token.value)
+    let createString = token.tokenType + '("' + token.value + '")' + ', '
+    this.oneSentence += createString
+    this.createSentenceObj(token)
     this.removeInput(token)
   }
 
@@ -67,12 +73,11 @@ export class Sentence {
       if (!this.checkIfTokenIsValidAllTypes(token)) {
         return
       }
-      this.addTokenToSentence(token)
+      this.parseSentence(token)
     }
     this.removeSentence()
     console.log(this.sentence)
-
-    return this.oneSentence
+    return this.sentence
   }
 
   removeSentence() {

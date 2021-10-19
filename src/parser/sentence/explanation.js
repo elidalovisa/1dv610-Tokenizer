@@ -20,10 +20,10 @@ export class Explanation extends Sentence {
     if (!this.checkIfTokenIsValid(token)) {
         return
       } 
-      this.addTokenToSentence(token)
+      this.parseSentence(token)
     }
     this.removeSentence()
-    console.log(this.oneSentence)
+    console.log(this.sentence)
     return this.oneSentence
   }
 }
