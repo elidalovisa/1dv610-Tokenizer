@@ -34,28 +34,21 @@ export class Sentence {
   }
 
 
-  createSentenceString(token) {
-    let createSentence = token.value + ' '
-    this.sentenceString += createSentence
-
-    if(token.value == '!' || token.value == '?' || token.value == '.') {
-      this.sentenceString=  this.sentenceString.substring(0, this.sentenceString.length - 2)
-      createSentence = token.value + ' '
-      this.sentenceString = this.sentenceString.trim()
-      this.sentenceString += createSentence
-    }
-    return this.sentenceString.trim()
-  }
-
   addTokenToSentence(token) {
     this.checkIfTokenIsValid(token)
-    let sentenceForObj = this.createSentenceString(token)
+    this.sentenceString.push(token.value)
     let createString = token.tokenType + '("' + token.value + '")' + ', '
     this.oneSentence += createString
+    let flatArray = this.sentenceString.flat()
+    let join = this.sentenceString.join(' ')
+    let regex = /\s+([.,!?":])/g
+    let finalString = join.replace(regex, '$1')
+  
     this.sentence = {
       type: token.tokenType,
       tokens: this.oneSentence,
-      sentence: sentenceForObj
+      sentence: flatArray,
+      test: finalString
     }
     this.removeInput(token)
   }
