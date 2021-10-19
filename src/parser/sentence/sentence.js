@@ -22,7 +22,7 @@ export class Sentence {
 
   getFirstToken() {
     const firstToken = this.tokenizer.startTokenizer()
-    if (this.checkIfTokenIsValid(firstToken)) {
+    if (this.checkIfTokenIsValidAllTypes(firstToken)) {
       this.addTokenToSentence(firstToken)
     }
   }
@@ -35,7 +35,7 @@ export class Sentence {
 
 
   addTokenToSentence(token) {
-    this.checkIfTokenIsValid(token)
+    this.checkIfTokenIsValidAllTypes(token)
     this.sentenceStringArray.push(token.value)
     let createString = token.tokenType + '("' + token.value + '")' + ', '
     this.oneSentence += createString
@@ -70,6 +70,8 @@ export class Sentence {
       this.addTokenToSentence(token)
     }
     this.removeSentence()
+    console.log(this.sentence)
+
     return this.oneSentence
   }
 
