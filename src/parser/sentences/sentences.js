@@ -51,7 +51,6 @@ export class Sentences {
         this.sentencesArrayExplanation.push(fetchedSentenceExplanation)
       }
     }
-    console.log(this.sentencesArrayExplanation)
     return this.sentencesArrayExplanation
   }
 

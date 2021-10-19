@@ -20,22 +20,6 @@ export class Dot extends Sentence {
   }
 
  
-
-  createSentenceObj(token) {
-    this.flatArray = this.sentenceStringArray.flat()
-    let join = this.sentenceStringArray.join(' ')
-    let regex = /\s+([.,!?":])/g
-    this.finalString = join.replace(regex, '$1')
-    this.sentence = {
-      type: token.tokenType,
-      tokens: this.oneSentence,
-      words: this.flatArray,
-      sentence: this.finalString    
-  }
-    return this.sentence
-  }
-
-
   parseSentence(token) {
     this.checkIfTokenIsValid(token)
     this.sentenceStringArray.push(token.value)
@@ -49,7 +33,6 @@ export class Dot extends Sentence {
   getSentenceDot() {
     this.oneSentence = ''
     this.sentenceStringArray = []
-
     this.getFirstToken()
     let token = {}
     while (token.tokenType !== 'Dot') {
@@ -60,8 +43,6 @@ export class Dot extends Sentence {
       this.parseSentence(token)
     }
     this.removeSentence()
-    console.log(this.oneSentence)
-    console.log(this.sentence)
     return this.sentence
   }
 

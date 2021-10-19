@@ -33,7 +33,7 @@ const main = async () => {
     grammar.add(tokenTypeQuestion)
     grammar.add(tokenTypeExplanation)
 
-    const tokenizer = new Tokenizer(grammar, 'hej! Vad heter du? Jag heter Elida. Det är kallt idag.')
+    const tokenizer = new Tokenizer(grammar, 'hej! Vad heter du? Jag heter Elida. Det är kallt idag. Hejdå!')
     const dotParser = new Dot(tokenizer)
     const questionParser = new Question(tokenizer)
     const explanationParser = new Explanation(tokenizer)
