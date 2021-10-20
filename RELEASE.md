@@ -31,6 +31,7 @@ Förtydligande: Examinator kommer sätta betyg oberoende på vad ni anser. Att h
  * Länka in URL om du använder olika repositorier för dina olika komponenter. 
  
  * Beskriv komponenterna och hur de skall användas.
+ Komponenterna sammanställs i Parser, och i app.js kör man koden, där skriver man in den text som ska parsas. Här kan man välja metoder från parser.js för att parsa texten. Konstruktorn i Parser skapar alla objekt som behövs för att samtliga komponenter ska fungera.
 
  * Beskriv hur du anpassat din kod och instruktioner för att någon annan programmerare skall kunna använda dina komponenter. Om du skrivit instruktioner för din användare länka till dessa. Om inte beskriv här hur någon skall göra. 
 

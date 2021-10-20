@@ -18,6 +18,5 @@
     this.type = type; // What type of grammatics to be used
     this.regex = regex; // Array with regex.
   } 
-  // function add to add token type, ex word dot 
 
 }

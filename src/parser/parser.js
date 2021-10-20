@@ -16,7 +16,6 @@ import { Dot } from './sentence/dot.js'
  */
 
 export class Parser {
-
   constructor() {
     this.grammar = new Grammar('Word')
     this.tokenTypeWord = new TokenType('Word', /^[\w|åäöÅÄÖ]+/g)
@@ -28,7 +27,6 @@ export class Parser {
     this.grammar.add(this.tokenTypeQuestion)
     this.grammar.add(this.tokenTypeExplanation)
     this.tokenizer = new Tokenizer(this.grammar, this.stringToParse)
-
     this.dotParser = new Dot(this.tokenizer)
     this.questionParser = new Question(this.tokenizer)
     this.explanationParser = new Explanation(this.tokenizer)

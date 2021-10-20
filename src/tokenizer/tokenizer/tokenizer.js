@@ -22,7 +22,7 @@ export class Tokenizer {
     this.countNull = 0
   }
 
-  getTokenTypes() {
+  _getTokenTypes() {
     for (let i = 0; i < this.grammarTokens.length; i++) {
       this.tokenTypes.push(this.grammarTokens[i])
     }
@@ -30,7 +30,7 @@ export class Tokenizer {
   }
 
 
-  checkForEmptyString() {
+  _checkForEmptyString() {
     this.input.trim()
     if (this.input.length === 0) {
       this.activeToken = {
@@ -39,7 +39,7 @@ export class Tokenizer {
         tokenType: 'END'
       }
       this.hasEndToken = true
-      this.showActiveTokenForUser()
+      this._showActiveTokenForUser()
       return
     } else {
       return
@@ -47,25 +47,25 @@ export class Tokenizer {
   }
 
   startTokenizer() {
-    this.getTokenTypes()
-    this.checkForEmptyString()
+    this._getTokenTypes()
+    this._checkForEmptyString()
     this.handleUserInput()
     return this.activeToken
   }
 
-  handleEndToken() {
+  _handleEndToken() {
     this.getEndToken()
     if (this.hasEndToken) {
       return
     }
   }
 
-  getMaximalMunchArray(i) {
+  _getMaximalMunchArray(i) {
     this.maxMunchVariable = this.input.match(this.tokenTypes[i].regex)
     this.MaxMunchArray.push(this.maxMunchVariable)
   }
 
-  handleMaximalMunch(i) {
+  _handleMaximalMunch(i) {
     let maxMunchVariable
     if (this.matchArray.length >= 2) {
       maxMunchVariable = this.input.match(this.tokenTypes[i].regex)
@@ -84,8 +84,8 @@ export class Tokenizer {
       }
     }
   }
-
-  setActiveToken(i) {
+  
+  _setActiveToken(i) {
     this.activeToken = {
       value: this.input.match(this.tokenTypes[i].regex),
       regex: this.tokenTypes[i].regex,
@@ -93,7 +93,7 @@ export class Tokenizer {
     }
     return this.activeToken
   //  console.log(this.activeToken)
-   this.showActiveTokenForUser()
+//this._showActiveTokenForUser()
   }
 
   getActiveToken() {
@@ -103,16 +103,16 @@ export class Tokenizer {
   handleUserInput() {
     let countNull = 0
     let matchArray = []
-    this.handleEndToken()
+    this._handleEndToken()
     for (let i = 0; i < this.number; i++) {
       let hasMatch = this.tokenTypes[i].regex.test(this.input)
       if (hasMatch) {
         matchArray.push(hasMatch)
         if (matchArray.length >= 2) {
-          this.handleMaximalMunch(i)
+          this._handleMaximalMunch(i)
         }
       } if (hasMatch && matchArray.length == 1) {
-        this.setActiveToken(i)
+        this._setActiveToken(i)
       } if (!hasMatch) {
         countNull++
       } if (countNull === this.number && this.input.length >= 1) {
@@ -144,11 +144,11 @@ export class Tokenizer {
       this.activeToken = this.prevTokens[this.prevTokens.length - 1]
       this.nextTokens.unshift(this.activeToken)
       this.prevTokens.pop()
-      this.showActiveTokenForUser()
+      this._showActiveTokenForUser()
     }
   }
 
-  showActiveTokenForUser() {
+  _showActiveTokenForUser() {
     console.log('VALUE: ' + this.activeToken.value + '\n' + 'TYPE: ' + this.activeToken.tokenType + '\n' + 'REGEX: ' + this.activeToken.regex)
   }
 
