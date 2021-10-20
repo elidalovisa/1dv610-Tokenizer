@@ -47,7 +47,10 @@ Lista de enskilda testfallen, eller länka in detta.
 
 | Namn      | Indata | Förväntat Utfall | PASS/FAIL |
 | --------- | ------ | ---------------- | --------- |
-|           |        |                  |           |
+|       TC1 (Få första meningen EXPLANATION)   |   A! B. C!     |       Objekt av typ "Explanation" med Sentence "A!"        |     PASS      |
+|       TC2 (Få kastat undantag) | &! B. C!     |       Error "No valid regex match"         |     PASS      |
+|       TC3 (Få första meningen DOT) | B. C!     |       B. C!       |Objekt av typ "Dot" med Sentence "B."  |     PASS      |
+
 
 Screenshots från automatisk testning.
 
