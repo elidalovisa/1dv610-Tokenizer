@@ -8,6 +8,7 @@
 
 import { Document } from './parser/document/document.js'
 import { PrettyPrinter } from './prettyPrinter/prettyPrinter.js'
+import { Parser } from './parser/parser.js'
 
 
 /**
@@ -15,9 +16,13 @@ import { PrettyPrinter } from './prettyPrinter/prettyPrinter.js'
  */
 const main = async () => {
   try {
-    const document = new Document('hej! Vad heter du? Jag heter Elida. Det är kallt idag. Hejdå!')
-    const prettyPrinter = new PrettyPrinter(document)
-    prettyPrinter.print()
+    const parser = new Parser()
+    parser.parse()
+   // const document = new Document()
+
+   // document.parse('hejsan. Jag heter!')
+   // const prettyPrinter = new PrettyPrinter(document)
+   // prettyPrinter.print()
   
     // const run = new Run(tokenizer)
     // run.runTokenizer()

@@ -1,4 +1,4 @@
-import { Document } from '../parser/document/document.js'
+import { StyleDot } from './styleDot.js'
 
 /**
  * A prettyPrinter class to make a document look nicer.
@@ -12,6 +12,7 @@ export class PrettyPrinter {
   constructor(document) {
     this.document = document
     this.documentToStyle = []
+    this.styleDot = new StyleDot(this.documentToStyle)
   }
 
   print() {
@@ -20,16 +21,15 @@ export class PrettyPrinter {
   }
 
   getDocumentToStyle() {
-    this.documentToStyle = this.document.parse()
+    this.documentToStyle = this.document.getParsedDocument()
     return this.documentToStyle
   }
 
   styleDocument() {
-    let document = this.getDocumentToStyle()
-    for (let i = 0; i < document.length; i++) {
-      this.colorDot(document, i)
-      this.colorQuestion(document, i)
-      this.colorExplanation(document, i)
+    for (let i = 0; i < this.documentToStyle.length; i++) {
+      this.colorDot(this.documentToStyle, i)
+      this.colorQuestion(this.documentToStyle, i)
+      this.colorExplanation(this.documentToStyle, i)
     }
   }
 

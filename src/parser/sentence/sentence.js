@@ -22,20 +22,20 @@ export class Sentence {
     }
   }
 
-  getFirstToken() {
+  _getFirstToken() {
     const firstToken = this.tokenizer.startTokenizer()
-    if (this.checkIfTokenIsValidAllTypes(firstToken)) {
-      this.parseSentence(firstToken)
+    if (this._checkIfTokenIsValidAllTypes(firstToken)) {
+      this._parseSentence(firstToken)
     }
   }
 
-  checkIfTokenIsValidAllTypes(token) {
+  _checkIfTokenIsValidAllTypes(token) {
     if (token.tokenType === 'Word' || token.tokenType === 'Dot' || token.tokenType === 'Question' || token.tokenType === 'Explanation') {
       return true
     }
   }
 
-  createSentenceObj(token){
+  _createSentenceObj(token){
     this.flatArray = this.sentenceStringArray.flat()
     let join = this.sentenceStringArray.join(' ')
     let regex = /\s+([.,!?":])/g
@@ -49,16 +49,16 @@ export class Sentence {
   }
 
 
-  parseSentence(token) {
-   this.checkIfTokenIsValidAllTypes(token)
+  _parseSentence(token) {
+   this._checkIfTokenIsValidAllTypes(token)
     this.sentenceStringArray.push(token.value)
     let createString = token.tokenType + '("' + token.value + '")' + ', '
     this.oneSentence += createString
-    this.createSentenceObj(token)
-    this.removeInput(token)
+    this._createSentenceObj(token)
+    this._removeInput(token)
   }
 
-  removeInput(token) {
+  _removeInput(token) {
     let removeInput = token.value + ' '
     this.sentenceToRemove += removeInput
   }
@@ -66,30 +66,26 @@ export class Sentence {
   getSentenceAllTypes() {
     this.oneSentence = ''
     this.sentenceStringArray = []
-    this.getFirstToken()
+    this._getFirstToken()
     let token = {}
     while (token.tokenType !== 'Dot' && token.tokenType !== 'Question' && token.tokenType !== 'Explanation') {
       token = this.tokenizer.getNextToken()
-      if (!this.checkIfTokenIsValidAllTypes(token)) {
+      if (!this._checkIfTokenIsValidAllTypes(token)) {
         return
       }
-      this.parseSentence(token)
+      this._parseSentence(token)
     }
-    this.removeSentence()
+    this._removeSentence()
     return this.sentence
   }
 
-  removeSentence() {
+  _removeSentence() {
     this.sentenceToRemove.toString()
     this.tokenizer.input = this.tokenizer.input.replace(this.sentenceToRemove, '')
     this.tokenizer.input = this.tokenizer.input.substring(2)
   }
 
-  getEndType() {
+  _getEndType() {
     return this.sentence.type
-  }
-
-  getSentence() {
-    return this.sentence
   }
 }

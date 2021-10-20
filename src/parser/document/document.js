@@ -24,31 +24,40 @@ import { Dot } from '../sentence/dot.js'
 
 export class Document {
 
-  constructor(stringToParse) {
-    this.stringToParse = stringToParse
+  constructor(tokenizer, sentencesParser) {
+    this.tokenizer = tokenizer
+    this.sentencesParser = sentencesParser
 
-    const grammar = new Grammar('Word')
-    const tokenTypeWord = new TokenType('Word', /^[\w|åäöÅÄÖ]+/g)
-    const tokenTypeDot = new TokenType('Dot', /^\./g)
-    const tokenTypeQuestion = new TokenType('Question', (/^\?/g))
-    const tokenTypeExplanation = new TokenType('Explanation', (/^\!/g))
-    grammar.add(tokenTypeWord)
-    grammar.add(tokenTypeDot)
-    grammar.add(tokenTypeQuestion)
-    grammar.add(tokenTypeExplanation)
-    this.tokenizer = new Tokenizer(grammar, this.stringToParse)
+    /*
+    this.grammar = new Grammar('Word')
+    this.tokenTypeWord = new TokenType('Word', /^[\w|åäöÅÄÖ]+/g)
+    this.tokenTypeDot = new TokenType('Dot', /^\./g)
+    this.tokenTypeQuestion = new TokenType('Question', (/^\?/g))
+    this.tokenTypeExplanation = new TokenType('Explanation', (/^\!/g))
+    this.grammar.add(this.tokenTypeWord)
+    this.grammar.add(this.tokenTypeDot)
+    this.grammar.add(this.tokenTypeQuestion)
+    this.grammar.add(this.tokenTypeExplanation)
+    this.tokenizer = new Tokenizer(this.grammar, this.stringToParse)
 
-    const dotParser = new Dot(this.tokenizer)
-    const questionParser = new Question(this.tokenizer)
-    const explanationParser = new Explanation(this.tokenizer)
-    this.sentences = new Sentences(this.tokenizer, dotParser, questionParser, explanationParser)
+    this.dotParser = new Dot(this.tokenizer)
+    this.questionParser = new Question(this.tokenizer)
+    this.explanationParser = new Explanation(this.tokenizer)
+    this.sentences = new Sentences(this.tokenizer, this.dotParser, this.questionParser, this.explanationParser) */
 
     this.document = []
   }
 
-  parse() {
-    let parsedDocument = this.getAllSentences()
-    return parsedDocument
+  parse(stringToParse) {
+    this.tokenizer.input = stringToParse
+    this.document = this.sentencesParser.getAllSentences()
+    return this.document
+
+  }
+
+  getParsedDocument() {
+    return this.document
+
   }
 
   getAllSentences() {
@@ -60,19 +69,19 @@ export class Document {
   getAllSentencesDot() {
     this.document = this.sentences.getAllSentencesDot()
     this.getEndToken()
-    console.log(this.document)
+    return this.document
   }
 
   getAllSentencesQuestion() {
     this.document = this.sentences.getAllSentencesQuestion()
     this.getEndToken()
-    console.log(this.document)
+    return this.document
   }
 
   getAllSentencesExplanation() {
     this.document = this.sentences.getAllSentencesExplanation()
     this.getEndToken()
-    console.log(this.document)
+    return this.document
   }
 
   getEndToken() {

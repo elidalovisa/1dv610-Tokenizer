@@ -5,43 +5,43 @@ export class Explanation extends Sentence {
     super(tokenizer)
   }
 
-  checkIfTokenIsValid(token) {
+  _checkIfTokenIsValid(token) {
     if (token.tokenType === 'Word' || token.tokenType === 'Explanation') {
       return true
     }
   }
 
-  getFirstToken() {
+  _getFirstToken() {
     const firstToken = this.tokenizer.startTokenizer()
-    if (this.checkIfTokenIsValid(firstToken)) {
-      this.parseSentence(firstToken)
+    if (this._checkIfTokenIsValid(firstToken)) {
+      this._parseSentence(firstToken)
     }
     return firstToken
   }
 
 
-  parseSentence(token) {
-    this.checkIfTokenIsValid(token)
+  _parseSentence(token) {
+    this._checkIfTokenIsValid(token)
     this.sentenceStringArray.push(token.value)
     let createString = token.tokenType + '("' + token.value + '")' + ', '
     this.oneSentence += createString
-    this.createSentenceObj(token)
-    this.removeInput(token)
+    this._createSentenceObj(token)
+    this._removeInput(token)
   }
 
   getSentenceExplanation() {
     this.oneSentence = ''
     this.sentenceStringArray = []
-    this.getFirstToken()
+    this._getFirstToken()
     let token = {}
     while (token.tokenType !== 'Explanation') {
       token = this.tokenizer.getNextToken()
-      if (!this.checkIfTokenIsValid(token)) {
+      if (!this._checkIfTokenIsValid(token)) {
         return
       }
-      this.parseSentence(token)
+      this._parseSentence(token)
     }
-    this.removeSentence()
+    this._removeSentence()
     return this.sentence
   }
 }
