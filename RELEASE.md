@@ -47,17 +47,24 @@ Lista de enskilda testfallen, eller länka in detta.
 
 | Namn      | Indata | Förväntat Utfall | PASS/FAIL |
 | --------- | ------ | ---------------- | --------- |
-**_Test av klassen Sentence_**
+**Test av klassen Sentence**
 |       getFirstExplanation |   A! B. C!     |       Objekt av typ "Explanation" med Sentence "A!"        |     PASS      |
 |       getFirstDot | B. C!     |      Objekt av typ "Dot" med Sentence "B."  |     PASS      |
 |       getFirstQuestion | A? B. C!     |      Objekt av typ "Question" med Sentence "A?"  |     PASS      |
 |       getFirstError | &! B. C!     |       Error "No valid regex match"         |     PASS      |
-**_Test av klassen Dot_**
+**Test av klassen Dot**
 |       getDotFirstSentence | B. C!     |       Objekt av typ "Dot" med Sentence "B."        |     PASS      |
 |       getDotFirstError | &B. C!     |        Error "No valid regex match"           |     PASS      |
-**_Test av klassen Question_**
+**Test av klassen Question**
 |       getQuestionFirstSentence | A? B. C!     |          Objekt av typ "Question" med Sentence "A?"         |     PASS      |
 |       getQuestionFirstError | &B. C!     |           Error "No valid regex match"        |     PASS      |
+**Test av klassen Explanation**
+|       getExplanationFirstSentence | A! B. C!     |          Objekt av typ "Explanation" med Sentence "A!"         |     PASS      |
+|       getExplanationFirstError | &B. C!     |           Error "No valid regex match"        |     PASS      |
+**Test av klassen Sentences**
+|       getExplanationFirstError | &B. C!     |           Error "No valid regex match"        |     PASS      |
+
+
 
 
 
