@@ -52,7 +52,13 @@ Lista de enskilda testfallen, eller länka in detta.
 |       getFirstDot | B. C!     |      Objekt av typ "Dot" med Sentence "B."  |     PASS      |
 |       getFirstQuestion | A? B. C!     |      Objekt av typ "Question" med Sentence "A?"  |     PASS      |
 |       getFirstError | &! B. C!     |       Error "No valid regex match"         |     PASS      |
-|       getFirstError | &! B. C!     |       Error "No valid regex match"         |     PASS      |
+**_Test av klassen Dot_**
+|       getDotFirstSentence | B. C!     |       Objekt av typ "Dot" med Sentence "B."        |     PASS      |
+|       getDotFirstError | &B. C!     |        Error "No valid regex match"           |     PASS      |
+**_Test av klassen Question_**
+|       getQuestionFirstSentence | A? B. C!     |          Objekt av typ "Question" med Sentence "A?"         |     PASS      |
+|       getQuestionFirstError | &B. C!     |           Error "No valid regex match"        |     PASS      |
+
 
 
 Screenshots från automatisk testning.
