@@ -343,7 +343,7 @@ function prettyPrintDot() {
   const documentParser = new Document(tokenizer, sentencesParser)
   const parser = new Parser()
   const prettyPrintDot = new PrettyPrinter(documentParser)
-  parser.parse(stringToParse)
+  parser.parsePrettyPrinter(stringToParse)
   prettyPrintDot.print()
 }
 
@@ -357,7 +357,7 @@ function prettyPrintQuestion() {
   const documentParser = new Document(tokenizer, sentencesParser)
   const parser = new Parser()
   const prettyPrintDot = new PrettyPrinter(documentParser)
-  parser.parse(stringToParse)
+  parser.parsePrettyPrinter(stringToParse)
   prettyPrintDot.print()
 }
 
@@ -371,7 +371,7 @@ function prettyPrintExplanation() {
   const documentParser = new Document(tokenizer, sentencesParser)
   const parser = new Parser()
   const prettyPrintDot = new PrettyPrinter(documentParser)
-  parser.parse(stringToParse)
+  parser.parsePrettyPrinter(stringToParse)
   prettyPrintDot.print()
 }
 
