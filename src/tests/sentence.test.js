@@ -193,14 +193,68 @@ function getAllExplanations() {
   const dotParser = new Dot(tokenizer)
   const sentencesParser = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
   let allExplanations = sentencesParser.getAllSentencesExplanation()
-  for (let i = 0; i < allExplanations .length; i++) {
-    if (allExplanations [i].type === 'Explanation') {
+  for (let i = 0; i < allExplanations.length; i++) {
+    if (allExplanations[i].type === 'Explanation') {
       continue
     }
   } if (allExplanations.length === 2) {
     console.log('Test TC12 pass!')
   } else {
     console.log('Test TC12 failed!')
+  }
+}
+
+function getAllDots() {
+  const stringToParse = 'A. B. C!'
+  const tokenizer = new Tokenizer(grammar, stringToParse)
+  const explanationParser = new Explanation(tokenizer)
+  const questionParser = new Question(tokenizer)
+  const dotParser = new Dot(tokenizer)
+  const sentencesParser = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
+  let allDots = sentencesParser.getAllSentencesDot()
+  for (let i = 0; i < allDots.length; i++) {
+    if (allDots[i].type === 'Dot') {
+      continue
+    }
+  } if (allDots.length === 2) {
+    console.log('Test TC13 pass!')
+  } else {
+    console.log('Test TC13 failed!')
+  }
+}
+
+function getAllSentences() {
+  const stringToParse = 'A. B. D? D!'
+  const tokenizer = new Tokenizer(grammar, stringToParse)
+  const explanationParser = new Explanation(tokenizer)
+  const questionParser = new Question(tokenizer)
+  const dotParser = new Dot(tokenizer)
+  const sentencesParser = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
+  let allSentences = sentencesParser.getAllSentences()
+  for (let i = 0; i < allSentences.length; i++) {
+    if (allSentences[i].type === 'Explanation' && 'Question' && 'Dot') {
+      continue
+    }
+  }
+  if (allSentences.length === 4) {
+    console.log('Test TC14 pass!')
+  } else {
+    console.log('Test TC14 failed!')
+  }
+}
+
+function checkSecondSentence() {
+  const stringToParse = 'A. BCD!'
+  const tokenizer = new Tokenizer(grammar, stringToParse)
+  const explanationParser = new Explanation(tokenizer)
+  const questionParser = new Question(tokenizer)
+  const dotParser = new Dot(tokenizer)
+  const sentencesParser = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
+  let allSentences = sentencesParser.getAllSentences()
+  if (allSentences[1].type === 'Explanation' && allSentences[1].sentence === 'BCD!') {
+    console.log('Test TC15 pass!')
+  } else {
+    console.log('Test TC15 failed!')
   }
 }
 
@@ -215,7 +269,10 @@ getQuestionFirstSentence()
 getQuestionFirstError()
 getExplanationFirstSentence()
 getExplanationFirstError()
-getAllQuestions() 
+getAllQuestions()
 //noQuestions()
 getAllExplanations()
+getAllDots()
+getAllSentences()
+checkSecondSentence()
 
