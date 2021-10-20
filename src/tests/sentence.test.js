@@ -6,6 +6,7 @@ import { Dot } from '../parser/sentence/dot.js'
 import { Question } from '../parser/sentence/question.js'
 import { Explanation } from '../parser/sentence/explanation.js'
 import { Sentences } from '../parser/sentences/sentences.js'
+import { Document } from '../parser/document/document.js'
 
 const grammar = new Grammar('Word')
 const tokenTypeWord = new TokenType('Word', /^[\w|åäöÅÄÖ]+/g)
@@ -266,6 +267,53 @@ function checkWordSecondSentence() {
   }
 }
 
+function checkSentencesError() {
+  try {
+    const stringToParse = '&. B CD!'
+    const tokenizer = new Tokenizer(grammar, stringToParse)
+    const explanationParser = new Explanation(tokenizer)
+    const questionParser = new Question(tokenizer)
+    const dotParser = new Dot(tokenizer)
+    const sentencesParser = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
+    let allSentences = sentencesParser.getAllSentences()
+    console.log('Test TC17 fail!')
+  } catch (error) {
+    console.log('Test TC17 pass!')
+  }
+}
+
+function getDocument() {
+  const stringToParse = 'A. B CD!'
+  const tokenizer = new Tokenizer(grammar, stringToParse)
+  const explanationParser = new Explanation(tokenizer)
+  const questionParser = new Question(tokenizer)
+  const dotParser = new Dot(tokenizer)
+  const sentencesParser = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
+  const documentParser = new Document(tokenizer, sentencesParser)
+  let parsedDocument = documentParser.parseAllDocument(stringToParse)
+  let lastToken = parsedDocument.pop()
+  if (parsedDocument.length === 2 && lastToken === 'END') {
+    console.log('Test TC18 pass!')
+  } else {
+    console.log('Test TC18 fail!')
+  }
+}
+
+function getDocumentError() {
+  try {
+  const stringToParse = '&A. B CD!'
+  const tokenizer = new Tokenizer(grammar, stringToParse)
+  const explanationParser = new Explanation(tokenizer)
+  const questionParser = new Question(tokenizer)
+  const dotParser = new Dot(tokenizer)
+  const sentencesParser = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
+  const documentParser = new Document(tokenizer, sentencesParser)
+  let parsedDocument = documentParser.parseAllDocument(stringToParse)
+  console.log('Test TC18 fail!')
+  } catch(error) {
+    console.log('Test TC18 pass!')
+  }
+}
 
 getFirstExplanation()
 getFirstDot()
@@ -284,4 +332,7 @@ getAllDots()
 getAllSentences()
 checkSecondSentence()
 checkWordSecondSentence()
+checkSentencesError()
+getDocument()
+getDocumentError()
 

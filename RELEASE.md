@@ -68,8 +68,10 @@ Lista de enskilda testfallen, eller länka in detta.
 |       getAllSentences | A. B. D? D!  |         Fyra objekt av samtliga meningstyper         |     PASS      |
 |       checkSecondSentence | A. BCD!  |         Ett objekt av typen "Explanation" med sentence "BCD!"        |     PASS      |
 |       checkWordSecondSentence | A. B CD!  |         En sträng "CD!"       |     PASS      |
+|       checkSentencesError | &. B CD!  |         Error "No valid regex match"      |     PASS      |
 **Test av klassen Document**
-|       checkWordSecondSentence | A. B CD!  |         En sträng "CD!"       |     PASS      |
+|       getDocument | A. B CD!  |         Ett dokument med end token       |     PASS      |
+|       getDocumententError | &A. B CD!  |          Error "No valid regex match"        |     PASS      |
 
 
 

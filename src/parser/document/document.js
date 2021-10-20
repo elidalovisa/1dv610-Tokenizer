@@ -48,11 +48,16 @@ export class Document {
     this.document = []
   }
 
-  parse(stringToParse) {
+  parseAllDocument(stringToParse) {
     this.tokenizer.input = stringToParse
-    this.document = this.sentencesParser.getAllSentences()
+    this.parseAllSentences()
     return this.document
+  }
 
+  parseAllDot(stringToParse) {
+    this.tokenizer.input = stringToParse
+    this.getAllSentencesDot()
+    return this.document
   }
 
   getParsedDocument() {
@@ -60,31 +65,31 @@ export class Document {
 
   }
 
-  getAllSentences() {
-    this.document = this.sentences.getAllSentences()
-    this.getEndToken()
+  parseAllSentences() {
+    this.document = this.sentencesParser.getAllSentences()
+    this._getEndToken()
     return this.document
   }
 
   getAllSentencesDot() {
-    this.document = this.sentences.getAllSentencesDot()
+    this.document = this.sentencesParser.getAllSentencesDot()
     this.getEndToken()
     return this.document
   }
 
   getAllSentencesQuestion() {
-    this.document = this.sentences.getAllSentencesQuestion()
+    this.document = this.sentencesParser.getAllSentencesQuestion()
     this.getEndToken()
     return this.document
   }
 
-  getAllSentencesExplanation() {
-    this.document = this.sentences.getAllSentencesExplanation()
+ getAllSentencesExplanation() {
+    this.document = this.sentencesParser.getAllSentencesExplanation()
     this.getEndToken()
     return this.document
   }
 
-  getEndToken() {
+  _getEndToken() {
     this.tokenizer.getEndToken()
     let endToken = this.tokenizer.getActiveToken()
     endToken = endToken.tokenType
