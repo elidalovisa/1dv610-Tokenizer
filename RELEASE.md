@@ -72,6 +72,12 @@ Lista de enskilda testfallen, eller länka in detta.
 **Test av klassen Document**
 |       getDocument | A. B CD!  |         Ett dokument med end token       |     PASS      |
 |       getDocumententError | &A. B CD!  |          Error "No valid regex match"        |     PASS      |
+|       getDocumentSecondSentence() | A. B? C? D!  |          Objekt av typen "Question" med sentence "B?"        |     PASS      |
+**Test av klassen PrettyPrinter & Parse**
+|       prettyPrintDot() | A. |     Strängen "0 A." i färgen rosa.            |     PASS      |
+|       prettyPrintQuestion() | B?  |     Strängen "1 B?" i färgen grön.            |     PASS      |
+|       prettyPrintExplanation() | C!  |     Strängen "2 C!" i färgen blå.            |     PASS      |
+
 
 
 

@@ -7,6 +7,8 @@ import { Question } from '../parser/sentence/question.js'
 import { Explanation } from '../parser/sentence/explanation.js'
 import { Sentences } from '../parser/sentences/sentences.js'
 import { Document } from '../parser/document/document.js'
+import { PrettyPrinter } from '../prettyPrinter/prettyPrinter.js'
+import { Parser } from '../parser/parser.js'
 
 const grammar = new Grammar('Word')
 const tokenTypeWord = new TokenType('Word', /^[\w|åäöÅÄÖ]+/g)
@@ -301,7 +303,22 @@ function getDocument() {
 
 function getDocumentError() {
   try {
-  const stringToParse = '&A. B CD!'
+    const stringToParse = '&A. B CD!'
+    const tokenizer = new Tokenizer(grammar, stringToParse)
+    const explanationParser = new Explanation(tokenizer)
+    const questionParser = new Question(tokenizer)
+    const dotParser = new Dot(tokenizer)
+    const sentencesParser = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
+    const documentParser = new Document(tokenizer, sentencesParser)
+    let parsedDocument = documentParser.parseAllDocument(stringToParse)
+    console.log('Test TC18 fail!')
+  } catch (error) {
+    console.log('Test TC18 pass!')
+  }
+}
+
+function getDocumentSecondSentence() {
+  const stringToParse = 'A. B? C? D!'
   const tokenizer = new Tokenizer(grammar, stringToParse)
   const explanationParser = new Explanation(tokenizer)
   const questionParser = new Question(tokenizer)
@@ -309,10 +326,53 @@ function getDocumentError() {
   const sentencesParser = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
   const documentParser = new Document(tokenizer, sentencesParser)
   let parsedDocument = documentParser.parseAllDocument(stringToParse)
-  console.log('Test TC18 fail!')
-  } catch(error) {
-    console.log('Test TC18 pass!')
+  if (parsedDocument[1].type === 'Question' && parsedDocument[1].sentence === 'B?') {
+    console.log('Test TC19 pass!')
+  } else {
+    console.log('Test TC19 fail!')
   }
+}
+
+function prettyPrintDot() {
+  const stringToParse = 'A.'
+  const tokenizer = new Tokenizer(grammar, stringToParse)
+  const explanationParser = new Explanation(tokenizer)
+  const questionParser = new Question(tokenizer)
+  const dotParser = new Dot(tokenizer)
+  const sentencesParser = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
+  const documentParser = new Document(tokenizer, sentencesParser)
+  const parser = new Parser()
+  const prettyPrintDot = new PrettyPrinter(documentParser)
+  parser.parse(stringToParse)
+  prettyPrintDot.print()
+}
+
+function prettyPrintQuestion() {
+  const stringToParse = 'B?'
+  const tokenizer = new Tokenizer(grammar, stringToParse)
+  const explanationParser = new Explanation(tokenizer)
+  const questionParser = new Question(tokenizer)
+  const dotParser = new Dot(tokenizer)
+  const sentencesParser = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
+  const documentParser = new Document(tokenizer, sentencesParser)
+  const parser = new Parser()
+  const prettyPrintDot = new PrettyPrinter(documentParser)
+  parser.parse(stringToParse)
+  prettyPrintDot.print()
+}
+
+function prettyPrintExplanation() {
+  const stringToParse = 'C!'
+  const tokenizer = new Tokenizer(grammar, stringToParse)
+  const explanationParser = new Explanation(tokenizer)
+  const questionParser = new Question(tokenizer)
+  const dotParser = new Dot(tokenizer)
+  const sentencesParser = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
+  const documentParser = new Document(tokenizer, sentencesParser)
+  const parser = new Parser()
+  const prettyPrintDot = new PrettyPrinter(documentParser)
+  parser.parse(stringToParse)
+  prettyPrintDot.print()
 }
 
 getFirstExplanation()
@@ -335,4 +395,8 @@ checkWordSecondSentence()
 checkSentencesError()
 getDocument()
 getDocumentError()
+getDocumentSecondSentence()
+prettyPrintDot()
+prettyPrintQuestion()
+prettyPrintExplanation()
 

@@ -62,7 +62,6 @@ export class Document {
 
   getParsedDocument() {
     return this.document
-
   }
 
   parseAllSentences() {

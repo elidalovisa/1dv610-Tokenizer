@@ -37,9 +37,9 @@ constructor() {
 
 }
 
-parse() {
+parse(stringToParse) {
 this.document = new Document(this.tokenizer, this.sentencesParser)
-this.document.parseAllDocument('hej! jag heter. Vad heter du?')
+this.document.parseAllDocument(stringToParse)
 this.prettyPrinter = new PrettyPrinter(this.document)
 
 this.prettyPrinter.print()
