@@ -47,9 +47,12 @@ Lista de enskilda testfallen, eller länka in detta.
 
 | Namn      | Indata | Förväntat Utfall | PASS/FAIL |
 | --------- | ------ | ---------------- | --------- |
-|       TC1 (Få första meningen EXPLANATION)   |   A! B. C!     |       Objekt av typ "Explanation" med Sentence "A!"        |     PASS      |
-|       TC2 (Få kastat undantag) | &! B. C!     |       Error "No valid regex match"         |     PASS      |
-|       TC3 (Få första meningen DOT) | B. C!     |       B. C!       |Objekt av typ "Dot" med Sentence "B."  |     PASS      |
+**_Test av klassen Sentence_**
+|       getFirstExplanation |   A! B. C!     |       Objekt av typ "Explanation" med Sentence "A!"        |     PASS      |
+|       getFirstDot | B. C!     |      Objekt av typ "Dot" med Sentence "B."  |     PASS      |
+|       getFirstQuestion | A? B. C!     |      Objekt av typ "Question" med Sentence "A?"  |     PASS      |
+|       getFirstError | &! B. C!     |       Error "No valid regex match"         |     PASS      |
+|       getFirstError | &! B. C!     |       Error "No valid regex match"         |     PASS      |
 
 
 Screenshots från automatisk testning.
