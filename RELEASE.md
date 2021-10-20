@@ -62,7 +62,9 @@ Lista de enskilda testfallen, eller länka in detta.
 |       getExplanationFirstSentence | A! B. C!     |          Objekt av typ "Explanation" med Sentence "A!"         |     PASS      |
 |       getExplanationFirstError | &B. C!     |           Error "No valid regex match"        |     PASS      |
 **Test av klassen Sentences**
-|       getExplanationFirstError | &B. C!     |           Error "No valid regex match"        |     PASS      |
+|       getAllQuestions | A! B. C? D?     |           Två objekt av typen "Question"      |     PASS      |
+|       getNoQuestions | A! B. C.    |                |     PASS      |
+
 
 
 
