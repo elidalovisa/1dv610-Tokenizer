@@ -16,14 +16,6 @@ grammar.add(tokenTypeWord)
 grammar.add(tokenTypeDot)
 grammar.add(tokenTypeQuestion)
 grammar.add(tokenTypeExplanation)
-//const stringToParse = '&! B. C!'
-//const tokenizer = new Tokenizer(grammar, stringToParse)
-
-/*const dotParser = new Dot(tokenizer)
-const questionParser = new Question(tokenizer)
-const explanationParser = new Explanation(tokenizer) */
-
-//const sentenceParser = new Sentence(tokenizer)
 
 function getFirstExplanation() {
   const stringToParse = 'A! B. C!'
@@ -258,6 +250,22 @@ function checkSecondSentence() {
   }
 }
 
+function checkWordSecondSentence() {
+  const stringToParse = 'A. B CD!'
+  const tokenizer = new Tokenizer(grammar, stringToParse)
+  const explanationParser = new Explanation(tokenizer)
+  const questionParser = new Question(tokenizer)
+  const dotParser = new Dot(tokenizer)
+  const sentencesParser = new Sentences(tokenizer, dotParser, questionParser, explanationParser)
+  let allSentences = sentencesParser.getAllSentences()
+  let lastWord = allSentences[1].sentence.substr(allSentences[1].sentence.length - 3)
+  if (allSentences[1].type === 'Explanation' && lastWord === 'CD!') {
+    console.log('Test TC16 pass!')
+  } else {
+    console.log('Test TC16 failed!')
+  }
+}
+
 
 getFirstExplanation()
 getFirstDot()
@@ -275,4 +283,5 @@ getAllExplanations()
 getAllDots()
 getAllSentences()
 checkSecondSentence()
+checkWordSecondSentence()
 

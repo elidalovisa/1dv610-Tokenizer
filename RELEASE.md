@@ -67,6 +67,9 @@ Lista de enskilda testfallen, eller länka in detta.
 |       getAllDots | A. B. C!    |         Två objekt av typen "Dot"          |     PASS      |
 |       getAllSentences | A. B. D? D!  |         Fyra objekt av samtliga meningstyper         |     PASS      |
 |       checkSecondSentence | A. BCD!  |         Ett objekt av typen "Explanation" med sentence "BCD!"        |     PASS      |
+|       checkWordSecondSentence | A. B CD!  |         En sträng "CD!"       |     PASS      |
+**Test av klassen Document**
+|       checkWordSecondSentence | A. B CD!  |         En sträng "CD!"       |     PASS      |
 
 
 
