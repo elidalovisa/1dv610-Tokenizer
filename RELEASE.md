@@ -135,29 +135,23 @@ Gå igenom all kod inklusive kod från laboration 1 och uppdatera enligt bokens 
 Fokusera på tydlighet, variation, ärlighet och vad som är intressant. Exempelvis om du har icke självklara överväganden med olika kvalitetsregler som står i konflikt med varandra så är dessa extra intressanta.
 
 
-**Kapitel 2**
-_Pick one word per concept_ Boken pratar om att välja ett ord per koncept, exemplet boken ger är get och fetch för en metod som ska hämta data. Jag har ett exempel i min kod där jag inte följt detta. Jag väljer att inte ändra det i min kod för att visa på att jag uppmärksammat och tagit lärdom av detta.
+**Kapitel 2** - Kapitlet har påverkat min kod på såsätt att namngivningen på metoder är tydligare och lättare att läsa koden. Mindre kommentarer behövs för att förstå koden. Boken pratar bla om att välja ett ord per koncept (Pick one word per concept), exemplet boken ger är get och fetch för en metod som ska hämta data. Jag har ett exempel i min kod där jag inte följt detta. Jag väljer att inte ändra det i min kod för att visa på att jag uppmärksammat och tagit lärdom av detta.
 
 Gemensamt för metoder som hämtar data i min kod är att namnet börjar på "get". Här har jag dock namngivit en variabel med fetch, vilket innebär att jag använt två olika ord för samma koncept.
 
-
-` getAllSentencesDot() {
-    while (this.tokenizer.input !== '') {
-      let fetchedSentenceDot = this.dotParser.getSentenceDot()
-      if (fetchedSentenceDot !== undefined) {
-        this.sentencesArrayDot.push(fetchedSentenceDot)
-      }
-    }
-    return this.sentencesArrayDot
-  }`
-
-
+![ScreenShot word per concept](/img/screenshotNameConcept.png)
 
 **Kapitel 3**
+Från detta kapitel tar jag med mig att metoder ska vara små och göra en sak. Att dela upp koden så mycket som det går. Jag tycker att det är stor skillnad gällande detta i min Parser vs min Tokenizer. Exempel på en metod som jag har delat upp i flera små metoder:
+
+![ScreenShot small functions](/img/screenshotSmallFunctions.png)
 
 **Kapitel 4**
+Innan denna kurs har jag kommenterat min kod mycket, framförallt för att själv förstå min kod. Från detta kapitel tar jag med mig "Comments do not make up for bad code" och "Explain yourself in code". Genom att dela upp koden i mindre metoder samt tydlig namngivning behövs inte kommentarer lika ofta. Här är ett exempel på en lite störra metod som går att förstå utan kommentarer:
 
-**Kapitel 4**
+![ScreenShot comments](/img/screenshotComments.png)
+
+**Kapitel 5**
 
 **Kapitel 6**
 
