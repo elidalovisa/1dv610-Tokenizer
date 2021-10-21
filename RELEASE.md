@@ -1,3 +1,4 @@
+
 # Mall för inlämning laboration 1, 1dv610
 
 ## Checklista
@@ -153,6 +154,7 @@ Innan denna kurs har jag kommenterat min kod mycket, framförallt för att själ
 
 **Kapitel 5**
 I boken går det att läsa "Dependent Functions - If one function calls another, they should be vertically close, and the caller should be above the callee.  Jag har försökt att tänka på den vertikala formatteringen när jag utformat min kod, även här kan jag se en skillnad från Toekinizern är metoderna är mer utspridda. I Parsern har jag medvetet försökt lägga metoderna i en vertikal ordning utefter hur de används.
+
 ![ScreenShot formatting](/img/screenShotFormatting.png)
 
 **Kapitel 6**
@@ -191,4 +193,5 @@ Samma som för för lägre betyg men baka in de 10 reflektionerna från de olika
 ## Laborationsreflektion
 Reflektera över uppgiften utifrån din utveckling som programmerare. 
 Vad har du lärt dig och vad ser du fram emot att lära dig?
-Jag tycker att jag ser en stor skillnad i min kod från föregående laboration och det är roligt att se hur man kan utvecklas på så kort tid. Jag har lärt mig att det inte alltid är lätt hur man ska tänak när det gäller beroenden och jag har flera gånger fått omstrukturera min kod tills jag hittat den lösning som kännts bäst,
+
+Jag tycker att jag ser en stor skillnad i min kod från föregående laboration och det är roligt att se hur man kan utvecklas på så kort tid. Jag har lärt mig att det inte alltid är lätt hur man ska tänka när det gäller beroenden och jag har flera gånger fått omstrukturera min kod tills jag hittat den lösning som kännts bäst. Det har varit än väldigt lärorik och rolig uppgift.
