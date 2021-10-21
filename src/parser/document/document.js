@@ -31,9 +31,9 @@ export class Document {
     return this.document
   }
 
-  parseAllExplanation(stringToParse) {
+  parseAllQuestion(stringToParse) {
     this.tokenizer.input = stringToParse
-    this._getAllSentencesExplanation()
+    this._getAllSentencesQuestion()
     return this.document
   }
 

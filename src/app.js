@@ -5,9 +5,6 @@
  * @version 1.0.0
  */
 
-
-import { Document } from './parser/document/document.js'
-import { PrettyPrinter } from './prettyPrinter/prettyPrinter.js'
 import { Parser } from './parser/parser.js'
 
 /**

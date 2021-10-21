@@ -1,4 +1,3 @@
-import { StyleDot } from './styleDot.js'
 
 /**
  * A prettyPrinter class to make a document look nicer.
@@ -6,13 +5,11 @@ import { StyleDot } from './styleDot.js'
  * @author Elida Arrechea <es222vs@student.lnu.se>
  * @version 1.0.0
  */
-
 export class PrettyPrinter {
 
   constructor(document) {
     this.document = document
     this.documentToStyle = []
-    this.styleDot = new StyleDot(this.documentToStyle)
   }
 
   print() {

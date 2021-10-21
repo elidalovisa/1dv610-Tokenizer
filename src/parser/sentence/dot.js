@@ -1,14 +1,15 @@
 import { Sentence } from './sentence.js'
 
+
+/**
+ * A sentence type Dot.
+ *
+ * @author Elida Arrechea <es222vs@student.lnu.se>
+ * @version 1.0.0
+ */
 export class Dot extends Sentence {
   constructor(tokenizer) {
     super(tokenizer)
-  }
-
-  _checkIfTokenIsValid(token) {
-    if (token.tokenType == 'Dot' || token.tokenType == 'Word') {
-      return true
-    }
   }
 
   _getFirstToken() {
@@ -44,5 +45,11 @@ export class Dot extends Sentence {
     }
     this._removeSentence()
     return this.sentence
+  }
+
+  _checkIfTokenIsValid(token) {
+    if (token.tokenType == 'Dot' || token.tokenType == 'Word') {
+      return true
+    }
   }
 }

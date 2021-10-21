@@ -5,7 +5,6 @@
  * @author Elida Arrechea <es222vs@student.lnu.se>
  * @version 1.0.0
  */
-
 export class Sentence {
 
   constructor(tokenizer) {
@@ -22,18 +21,14 @@ export class Sentence {
     }
   }
 
-  _getFirstToken() {
-    const firstToken = this.tokenizer.startTokenizer()
-    if (this._checkIfTokenIsValidAllTypes(firstToken)) {
-      this._parseSentence(firstToken)
-    }
-  }
-
-  _checkIfTokenIsValidAllTypes(token) {
-    if (token.tokenType === 'Word' || token.tokenType === 'Dot' || token.tokenType === 'Question' || token.tokenType === 'Explanation') {
-      return true
-    }
-  }
+  _parseSentence(token) {
+    this._checkIfTokenIsValidAllTypes(token)
+     this.sentenceStringArray.push(token.value)
+     let createString = token.tokenType + '("' + token.value + '")' + ', '
+     this.oneSentence += createString
+     this._createSentenceObj(token)
+     this._removeInput(token)
+   }
 
   _createSentenceObj(token){
     this.flatArray = this.sentenceStringArray.flat()
@@ -46,16 +41,6 @@ export class Sentence {
       words: this.flatArray,
       sentence: this.finalString    
     }
-  }
-
-
-  _parseSentence(token) {
-   this._checkIfTokenIsValidAllTypes(token)
-    this.sentenceStringArray.push(token.value)
-    let createString = token.tokenType + '("' + token.value + '")' + ', '
-    this.oneSentence += createString
-    this._createSentenceObj(token)
-    this._removeInput(token)
   }
 
   _removeInput(token) {
@@ -78,6 +63,20 @@ export class Sentence {
     this._removeSentence()
     return this.sentence
   }
+
+  _getFirstToken() {
+    const firstToken = this.tokenizer.startTokenizer()
+    if (this._checkIfTokenIsValidAllTypes(firstToken)) {
+      this._parseSentence(firstToken)
+    }
+  }
+  
+  _checkIfTokenIsValidAllTypes(token) {
+    if (token.tokenType === 'Word' || token.tokenType === 'Dot' || token.tokenType === 'Question' || token.tokenType === 'Explanation') {
+      return true
+    }
+  }
+
 
   _removeSentence() {
     this.sentenceToRemove.toString()

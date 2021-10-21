@@ -14,7 +14,6 @@ import { Dot } from './sentence/dot.js'
  * @author Elida Arrechea <es222vs@student.lnu.se>
  * @version 1.0.0
  */
-
 export class Parser {
   constructor() {
     this.grammar = new Grammar('Word')

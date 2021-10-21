@@ -134,6 +134,27 @@ Gå igenom all kod inklusive kod från laboration 1 och uppdatera enligt bokens 
 
 Fokusera på tydlighet, variation, ärlighet och vad som är intressant. Exempelvis om du har icke självklara överväganden med olika kvalitetsregler som står i konflikt med varandra så är dessa extra intressanta.
 
+**Kapitel 2**
+_Pick one word per concept_ The book talks about picking one word for a concept, the example in the book is to use fetch and get for a methid with the
+
+**Kapitel 3**
+
+**Kapitel 4**
+
+**Kapitel 4**
+
+**Kapitel 6**
+
+**Kapitel 7**
+
+**Kapitel 8**
+
+**Kapitel 9**
+
+**Kapitel 10**
+
+**Kapitel 11**
+
 ### Kodkvalitetskrav för högre betyg
 Samma som för för lägre betyg men baka in de 10 reflektionerna från de olika kapitlen till en sammanhängande text som spänner över båda uppgifterna. Du har alltså en enda reflektion fast för både koden i uppgift 1 och uppgift 2. Ca två sidor max. Använd varierade uttryck från boken. 
 

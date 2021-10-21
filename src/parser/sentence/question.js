@@ -1,14 +1,14 @@
 import { Sentence } from './sentence.js'
 
+/**
+ * A sentence type Question.
+ *
+ * @author Elida Arrechea <es222vs@student.lnu.se>
+ * @version 1.0.0
+ */
 export class Question extends Sentence {
   constructor(tokenizer) {
     super(tokenizer)
-  }
-
-  _checkIfTokenIsValid(token) {
-    if (token.tokenType === 'Word' || token.tokenType == 'Question') {
-      return true
-    }
   }
 
   _getFirstToken() {
@@ -42,5 +42,11 @@ export class Question extends Sentence {
     }
     this._removeSentence()
     return this.sentence
+  }
+
+  _checkIfTokenIsValid(token) {
+    if (token.tokenType === 'Word' || token.tokenType == 'Question') {
+      return true
+    }
   }
 }
