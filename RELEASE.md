@@ -1,18 +1,19 @@
+
 # Mall för inlämning laboration 1, 1dv610
 
 ## Checklista
   - [x] Jag har skrivit all kod och reflektioner själv. Jag har inte använt mig av andras kod för att lösa uppgiften.
-  - [ ] Mina testresultat är skrivna utifrån utförd testning ( och inte teoretiskt, "det bör fungera" :) )
+  - [x] Mina testresultat är skrivna utifrån utförd testning ( och inte teoretiskt, "det bör fungera" :) )
   - [x] De enda statiska metoder eller funktioner utanför klasser som jag har är för att starta upp min testapplikation ex main(java).
   - [x] De enda bibliotek och färdiga klasser som används är sådana som måste användas (eller som används för att testa modulen).
 
 ## Egenskattning och mål
   - [ ] Jag är inte klar eftersom jag vet att jag saknar något. Då skall du inte lämna in!
   - [x] Jag eftersträvar med denna inlämning godkänt betyg (E-D)
-    - [ ] De flesta testfall fungerar (enstaka testfall kan misslyckas, tydligt vilka)
+    -[x] De flesta testfall fungerar (enstaka testfall kan misslyckas, tydligt vilka)
     - [x] Koden är förberedd på återanvändning
     - [x] All kod samt historik finns i git 
-    - [ ] Reflektionerna är skrivna
+    - [x] Reflektionerna är skrivna
     - [x] Koden är läsbar
   - [ ] Jag eftersträvar med denna inlämning högre betyg (C) och anser mig uppfylla alla extra krav för detta. 
     - [ ] Jag är noga i min testning
@@ -31,7 +32,7 @@ Förtydligande: Examinator kommer sätta betyg oberoende på vad ni anser. Att h
  * Länka in URL om du använder olika repositorier för dina olika komponenter. 
  
  * Beskriv komponenterna och hur de skall användas.
- Följande komponenter finns i min Laboration:
+ Följande komponenter finns i min laboration:
 
  **Document** - Denna komponent används för att parasa ett helt dokument, dvs fler än 1 mening. Dokumentet avslutas med ett "END"-token. Komponenten har privata metoder som hanterar parsningen samt publika metoder som går att nå utifrån för att kunna parsa ett dokument. Document tar en tokinizer och ett sentences objekt i konstruktorn (detta för att få tillgång till meningarna som ska parsas samt för att kunna skapa meningar -> detta görs i Sentences)
 
@@ -76,7 +77,7 @@ Relationerna mellan klasserna är som följande:
 - Sentences -> Dependency till Tokenizer och Sentence (Dot, Question, Explanation)
 - Document -> Dependency till Tokenizer och Sentences
 - PrettyPrinter -> Dependency till Document
-- Parser -> Association till Tokenizer, Sentence (Dot, Question, Explanation), Sentences, Document.
+- Parser -> Dependency till Tokenizer, Sentence (Dot, Question, Explanation), Sentences, Document.
 
 Viktiga metoder anser jag är följande:
 - _parseSentence och _createSentenceObj, detta för att de utgör en grundpelare för resten av funktionalliteten i appliaktionen. Här skapas ett objekt som efterfågas i Sentences och Document.
@@ -134,6 +135,7 @@ Gå igenom all kod inklusive kod från laboration 1 och uppdatera enligt bokens 
 
 Fokusera på tydlighet, variation, ärlighet och vad som är intressant. Exempelvis om du har icke självklara överväganden med olika kvalitetsregler som står i konflikt med varandra så är dessa extra intressanta.
 
+<<<<<<< HEAD
 **Kapitel 2**
 _Pick one word per concept_ The book talks about picking one word for a concept, the example in the book is to use fetch and get for a methid with the
 
@@ -154,6 +156,59 @@ _Pick one word per concept_ The book talks about picking one word for a concept,
 **Kapitel 10**
 
 **Kapitel 11**
+=======
+
+**Kapitel 2** - Kapitlet har påverkat min kod på såsätt att namngivningen på metoder är tydligare och lättare att läsa koden. Mindre kommentarer behövs för att förstå koden. Boken pratar bla om att välja ett ord per koncept (Pick one word per concept), exemplet boken ger är get och fetch för en metod som ska hämta data. Jag har ett exempel i min kod där jag inte följt detta. Jag väljer att inte ändra det i min kod för att visa på att jag uppmärksammat och tagit lärdom av detta.
+
+Gemensamt för metoder som hämtar data i min kod är att namnet börjar på "get". Här har jag dock namngivit en variabel med fetch, vilket innebär att jag använt två olika ord för samma koncept.
+
+![ScreenShot word per concept](/img/screenshotNameConcept.png)
+
+**Kapitel 3**
+Från detta kapitel tar jag med mig att metoder ska vara små och göra en sak. Att dela upp koden så mycket som det går. Jag tycker att det är stor skillnad gällande detta i min Parser vs min Tokenizer. Exempel på en metod som jag har delat upp i flera små metoder:
+
+![ScreenShot small functions](/img/screenshotSmallFunctions.png)
+
+**Kapitel 4**
+Innan denna kurs har jag kommenterat min kod mycket, framförallt för att själv förstå min kod. Från detta kapitel tar jag med mig "Comments do not make up for bad code" och "Explain yourself in code". Genom att dela upp koden i mindre metoder samt tydlig namngivning behövs inte kommentarer lika ofta. Här är ett exempel på en lite störra metod som går att förstå utan kommentarer:
+
+![ScreenShot comments](/img/screenshotComments.png)
+
+**Kapitel 5**
+I boken går det att läsa "Dependent Functions - If one function calls another, they should be vertically close, and the caller should be above the callee.  Jag har försökt att tänka på den vertikala formatteringen när jag utformat min kod, även här kan jag se en skillnad från Toekinizern är metoderna är mer utspridda. I Parsern har jag medvetet försökt lägga metoderna i en vertikal ordning utefter hur de används.
+
+![ScreenShot formatting](/img/screenShotFormatting.png)
+
+**Kapitel 6**
+Detta kapitel har fått mig att reflektera över hur man kan arbeta med datastrukturer och skillnaden mellan datastrukturer och objekt som boken tar upp. Tillexempel är min klass Document en datastruktur, den har inga publika metoder som implementerar någon typ av funktionalitet utan använder publika metoder för det publika interfacet.
+
+![ScreenShot Datastructure](/img/screenShotDataStructur.png)
+
+**Kapitel 7**
+Detta kapitel har inte påverkat min nuvarande kod i Parsern, felhanteringen hanteras utav Tokenizern som kastar fel om det är ogiltliga tecken (och en mening inte kan skapas). Det skulle absolut gå att utöka felhanteringen i koden för att avse även andra områden.
+
+![ScreenShot Errorhandling](/img/screenShotError.png)
+
+**Kapitel 8**
+Kapitlet tar upp "boundaries" och hur man kan arbeta med en tredje part, med vikt på hur man ska integrera tredje part kod. Genom att skapa ett interface kan vi isolera koden och det är enkelt att byta ut den tredje partern. Dette ger en högre abstraktionsnivå till koden. Jag tycker att det har varit svårt att applicera detta kapitel i min kod och har därför inget bra exempl att visa.
+
+**Kapitel 9**
+Kapritlet tar upp unit test och vikten av att skriva tydliga "läsbara" test, jag har tagit till mig detta och försökt skriva test som talar för sig själva. All kod som skrivs ska skrivas med tanken att någon annan ska kunna läsa den.
+Jag har valt att dela upp varje metod så att de utför ett test var, "Single Concept per Test". Detta för att inte få långa metoder som utför flera olika tester.
+
+![ScreenShot Test](/img/screenShootTest.png)
+
+**Kapitel 10**
+Detta kapitel handlar om klasser och jag har framför allt tagit till mig följande i min kod: Små klasser med ett ansvarsområde, enligt Single Responsibility Principle, jag har även försökt att ha en hög cohesion där så många metoder som möjligt i en klass använder alla medlemsvariabler.
+Här är ett exempel från min klass Document där samtliga metoder använder medlemsvariablen this.document:
+
+![ScreenShot Class](/img/screenShotClass.png)
+
+**Kapitel 11**
+Detta kapitel talar om hur vi ska dela upp ett system i mindre tjänster. I min kod har jag valt att använda en Pareser klass som skapar alla objekt som sedan skickas in i konstrukturn på berörda objekt. Genom att skicka in ett objekt i konstruktorn går det enklet att byta ut objektet, om jag tex vill använda en annan Tokenizer i framtiden. Detta är även ett bra tillvägaångssätt för att underlätta testning.
+
+![ScreenShot Systems](/img/screenShotSystems.png)
+>>>>>>> cd4371aa8429edc6146990f256fbd4ad31b7b2a3
 
 ### Kodkvalitetskrav för högre betyg
 Samma som för för lägre betyg men baka in de 10 reflektionerna från de olika kapitlen till en sammanhängande text som spänner över båda uppgifterna. Du har alltså en enda reflektion fast för både koden i uppgift 1 och uppgift 2. Ca två sidor max. Använd varierade uttryck från boken. 
@@ -161,4 +216,5 @@ Samma som för för lägre betyg men baka in de 10 reflektionerna från de olika
 ## Laborationsreflektion
 Reflektera över uppgiften utifrån din utveckling som programmerare. 
 Vad har du lärt dig och vad ser du fram emot att lära dig?
-Jag tycker att jag ser en stor skillnad i min kod från föregående laboration och det är roligt att se hur man kan utvecklas på så kort tid. Jag har lärt mig att det inte alltid är lätt hur man ska tänak när det gäller beroenden och jag har flera gånger fått omstrukturera min kod tills jag hittat den lösning som kännts bäst,
+
+Jag tycker att jag ser en stor skillnad i min kod från föregående laboration och det är roligt att se hur man kan utvecklas på så kort tid. Jag har lärt mig att det inte alltid är lätt hur man ska tänka när det gäller beroenden och jag har flera gånger fått omstrukturera min kod tills jag hittat den lösning som kännts bäst. Det har varit än väldigt lärorik och rolig uppgift.
