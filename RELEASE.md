@@ -2,17 +2,17 @@
 
 ## Checklista
   - [x] Jag har skrivit all kod och reflektioner själv. Jag har inte använt mig av andras kod för att lösa uppgiften.
-  - [ ] Mina testresultat är skrivna utifrån utförd testning ( och inte teoretiskt, "det bör fungera" :) )
+  - [x] Mina testresultat är skrivna utifrån utförd testning ( och inte teoretiskt, "det bör fungera" :) )
   - [x] De enda statiska metoder eller funktioner utanför klasser som jag har är för att starta upp min testapplikation ex main(java).
   - [x] De enda bibliotek och färdiga klasser som används är sådana som måste användas (eller som används för att testa modulen).
 
 ## Egenskattning och mål
   - [ ] Jag är inte klar eftersom jag vet att jag saknar något. Då skall du inte lämna in!
   - [x] Jag eftersträvar med denna inlämning godkänt betyg (E-D)
-    - [ ] De flesta testfall fungerar (enstaka testfall kan misslyckas, tydligt vilka)
+    -[x] De flesta testfall fungerar (enstaka testfall kan misslyckas, tydligt vilka)
     - [x] Koden är förberedd på återanvändning
     - [x] All kod samt historik finns i git 
-    - [ ] Reflektionerna är skrivna
+    - [x] Reflektionerna är skrivna
     - [x] Koden är läsbar
   - [ ] Jag eftersträvar med denna inlämning högre betyg (C) och anser mig uppfylla alla extra krav för detta. 
     - [ ] Jag är noga i min testning
@@ -31,7 +31,7 @@ Förtydligande: Examinator kommer sätta betyg oberoende på vad ni anser. Att h
  * Länka in URL om du använder olika repositorier för dina olika komponenter. 
  
  * Beskriv komponenterna och hur de skall användas.
- Följande komponenter finns i min Laboration:
+ Följande komponenter finns i min laboration:
 
  **Document** - Denna komponent används för att parasa ett helt dokument, dvs fler än 1 mening. Dokumentet avslutas med ett "END"-token. Komponenten har privata metoder som hanterar parsningen samt publika metoder som går att nå utifrån för att kunna parsa ett dokument. Document tar en tokinizer och ett sentences objekt i konstruktorn (detta för att få tillgång till meningarna som ska parsas samt för att kunna skapa meningar -> detta görs i Sentences)
 
@@ -76,7 +76,7 @@ Relationerna mellan klasserna är som följande:
 - Sentences -> Dependency till Tokenizer och Sentence (Dot, Question, Explanation)
 - Document -> Dependency till Tokenizer och Sentences
 - PrettyPrinter -> Dependency till Document
-- Parser -> Association till Tokenizer, Sentence (Dot, Question, Explanation), Sentences, Document.
+- Parser -> Dependency till Tokenizer, Sentence (Dot, Question, Explanation), Sentences, Document.
 
 Viktiga metoder anser jag är följande:
 - _parseSentence och _createSentenceObj, detta för att de utgör en grundpelare för resten av funktionalliteten i appliaktionen. Här skapas ett objekt som efterfågas i Sentences och Document.
@@ -152,18 +152,38 @@ Innan denna kurs har jag kommenterat min kod mycket, framförallt för att själ
 ![ScreenShot comments](/img/screenshotComments.png)
 
 **Kapitel 5**
+I boken går det att läsa "Dependent Functions - If one function calls another, they should be vertically close, and the caller should be above the callee.  Jag har försökt att tänka på den vertikala formatteringen när jag utformat min kod, även här kan jag se en skillnad från Toekinizern är metoderna är mer utspridda. I Parsern har jag medvetet försökt lägga metoderna i en vertikal ordning utefter hur de används.
+![ScreenShot formatting](/img/screenShotFormatting.png)
 
 **Kapitel 6**
+Detta kapitel har fått mig att reflektera över hur man kan arbeta med datastrukturer och skillnaden mellan datastrukturer och objekt som boken tar upp. Tillexempel är min klass Document en datastruktur, den har inga publika metoder som implementerar någon typ av funktionalitet utan använder publika metoder för det publika interfacet.
+
+![ScreenShot Datastructure](/img/screenShotDataStructur.png)
 
 **Kapitel 7**
+Detta kapitel har inte påverkat min nuvarande kod i Parsern, felhanteringen hanteras utav Tokenizern som kastar fel om det är ogiltliga tecken (och en mening inte kan skapas). Det skulle absolut gå att utöka felhanteringen i koden för att avse även andra områden.
+
+![ScreenShot Errorhandling](/img/screenShotError.png)
 
 **Kapitel 8**
+Kapitlet tar upp "boundaries" och hur man kan arbeta med en tredje part, med vikt på hur man ska integrera tredje part kod. Genom att skapa ett interface kan vi isolera koden och det är enkelt att byta ut den tredje partern. Dette ger en högre abstraktionsnivå till koden. Jag tycker att det har varit svårt att applicera detta kapitel i min kod och har därför inget bra exempl att visa.
 
 **Kapitel 9**
+Kapritlet tar upp unit test och vikten av att skriva tydliga "läsbara" test, jag har tagit till mig detta och försökt skriva test som talar för sig själva. All kod som skrivs ska skrivas med tanken att någon annan ska kunna läsa den.
+Jag har valt att dela upp varje metod så att de utför ett test var, "Single Concept per Test". Detta för att inte få långa metoder som utför flera olika tester.
+
+![ScreenShot Test](/img/screenShootTest.png)
 
 **Kapitel 10**
+Detta kapitel handlar om klasser och jag har framför allt tagit till mig följande i min kod: Små klasser med ett ansvarsområde, enligt Single Responsibility Principle, jag har även försökt att ha en hög cohesion där så många metoder som möjligt i en klass använder alla medlemsvariabler.
+Här är ett exempel från min klass Document där samtliga metoder använder medlemsvariablen this.document:
+
+![ScreenShot Class](/img/screenShotClass.png)
 
 **Kapitel 11**
+Detta kapitel talar om hur vi ska dela upp ett system i mindre tjänster. I min kod har jag valt att använda en Pareser klass som skapar alla objekt som sedan skickas in i konstrukturn på berörda objekt. Genom att skicka in ett objekt i konstruktorn går det enklet att byta ut objektet, om jag tex vill använda en annan Tokenizer i framtiden. Detta är även ett bra tillvägaångssätt för att underlätta testning.
+
+![ScreenShot Systems](/img/screenShotSystems.png)
 
 ### Kodkvalitetskrav för högre betyg
 Samma som för för lägre betyg men baka in de 10 reflektionerna från de olika kapitlen till en sammanhängande text som spänner över båda uppgifterna. Du har alltså en enda reflektion fast för både koden i uppgift 1 och uppgift 2. Ca två sidor max. Använd varierade uttryck från boken. 
