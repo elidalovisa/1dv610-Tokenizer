@@ -64,10 +64,24 @@ Metoderna i Parse är publika och ska användas för att parsa ett dokument. Som
 ## Beskrivning av min kod
 Beskriv din kod på en hög abstraktionsnivå. En kort beskrivning av dina viktigaste klasser och metoder i dina komponenter. Skapa gärna ett klassdiagram som bild. Beskriv relationerna mellan klasserna mellan komponenter.
 
-Samtliga komponenter är beronde av Tokenizer
+Samtliga komponenter bortsett från PrettyPrinter är beronde av Tokenizer. Vad gäller de viktigaste klasserna så är det följande:
+- Sentence
+- Sentences
+- Document
+- Tokenizer
+Då de bygger på varandra och krävs för att applikationen ska fungera.
+
+Viktiga metoder anser jag är följande:
+- _parseSentence och _createSentenceObj, detta för att de utgör en grundpelare för resten av funktionalliteten i appliaktionen. Här skapas ett objekt som efterfågas i Sentences och Document.
+
+- _getEndToken, är en metod som behövs för att kunna skapa ett Document.
+
+- Samtliga metoder i Parser klassen, då de ger tillgång till de objekt som skapas i parsern.
 
 ## Hur jag testat
 Beskriv hur du kommit fram till om din kod fungerar. Beskriv de olika delarna och hur de testats. Screenshots från manuell testning.
+
+Jag har skrivit mina tester manuellt och testat dem manuellt.  Jag har försökt att täcka alla olika utfall inom samtliga klasser.
 
 ### Testfall
 Lista de enskilda testfallen, eller länka in detta.
@@ -106,13 +120,6 @@ Lista de enskilda testfallen, eller länka in detta.
 |       prettyPrintExplanation() | C!  |     Strängen "2 C!" i färgen blå.            |     PASS      |
 
 
-
-
-
-
-
-
-
 Screenshots från automatisk testning.
 
 ## Kapitelreflektioner för kapitel 2-11
@@ -126,3 +133,4 @@ Samma som för för lägre betyg men baka in de 10 reflektionerna från de olika
 ## Laborationsreflektion
 Reflektera över uppgiften utifrån din utveckling som programmerare. 
 Vad har du lärt dig och vad ser du fram emot att lära dig?
+Jag tycker att jag ser en stor skillnad i min kod från föregående laboration och det är roligt att se hur man kan utvecklas på så kort tid. Jag har lärt mig att det inte alltid är lätt hur man ska tänak när det gäller beroenden och jag har flera gånger fått omstrukturera min kod tills jag hittat den lösning som kännts bäst,
