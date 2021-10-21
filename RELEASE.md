@@ -134,6 +134,43 @@ Gå igenom all kod inklusive kod från laboration 1 och uppdatera enligt bokens 
 
 Fokusera på tydlighet, variation, ärlighet och vad som är intressant. Exempelvis om du har icke självklara överväganden med olika kvalitetsregler som står i konflikt med varandra så är dessa extra intressanta.
 
+
+**Kapitel 2**
+_Pick one word per concept_ Boken pratar om att välja ett ord per koncept, exemplet boken ger är get och fetch för en metod som ska hämta data. Jag har ett exempel i min kod där jag inte följt detta. Jag väljer att inte ändra det i min kod för att visa på att jag uppmärksammat och tagit lärdom av detta.
+
+Gemensamt för metoder som hämtar data i min kod är att namnet börjar på "get". Här har jag dock namngivit en variabel med fetch, vilket innebär att jag använt två olika ord för samma koncept.
+
+
+` getAllSentencesDot() {
+    while (this.tokenizer.input !== '') {
+      let fetchedSentenceDot = this.dotParser.getSentenceDot()
+      if (fetchedSentenceDot !== undefined) {
+        this.sentencesArrayDot.push(fetchedSentenceDot)
+      }
+    }
+    return this.sentencesArrayDot
+  }`
+
+
+
+**Kapitel 3**
+
+**Kapitel 4**
+
+**Kapitel 4**
+
+**Kapitel 6**
+
+**Kapitel 7**
+
+**Kapitel 8**
+
+**Kapitel 9**
+
+**Kapitel 10**
+
+**Kapitel 11**
+
 ### Kodkvalitetskrav för högre betyg
 Samma som för för lägre betyg men baka in de 10 reflektionerna från de olika kapitlen till en sammanhängande text som spänner över båda uppgifterna. Du har alltså en enda reflektion fast för både koden i uppgift 1 och uppgift 2. Ca två sidor max. Använd varierade uttryck från boken. 
 
