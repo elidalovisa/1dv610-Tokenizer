@@ -31,14 +31,40 @@ Förtydligande: Examinator kommer sätta betyg oberoende på vad ni anser. Att h
  * Länka in URL om du använder olika repositorier för dina olika komponenter. 
  
  * Beskriv komponenterna och hur de skall användas.
+ Följande komponenter finns i min Laboration:
+
+ **Document** - Denna komponent används för att parasa ett helt dokument, dvs fler än 1 mening. Dokumentet avslutas med ett "END"-token. Komponenten har privata metoder som hanterar parsningen samt publika metoder som går att nå utifrån för att kunna parsa ett dokument. Document tar en tokinizer och ett sentences objekt i konstruktorn (detta för att få tillgång till meningarna som ska parsas samt för att kunna skapa meningar -> detta görs i Sentences)
+
+ **Sentence** - Denna komponent har ett interface med metoder som är gemensamma för samtliga sentence objekt. Jag har sedan skapat tre separata klasser som ärver dessa metoder, en klass för varje meningstyp. En Sentence tar en tokenizer i konstruktorn, detta för att få tillgång till meningen som ska parsas.
+
+ **Sentences** - Denna komponent parsar meningar, den kan parsa samtliga meningar eller meningar som avslutas med punkt(.), frågetecken(?), utroppstecken(!). Sentences tar en tokenizer, samt tre olika sentence objekt (dot, question och explanation) i konstruktorn. Detta för att kunna skapa de olika meningarna.
+
+ **Parser** - Denna komponent "binder samman" samtliga komponenter och används för att parsa ett dokument. Här skapas samtliga objekt som krävs för att applikationen ska fungera. Parsen har metoder som anropar metoder från Document klassen samt PrettyPrinter klassen. I Parsern skickar man in den text som man vill parsa.
+
+ **PrettyPrinter** - Denna komponent tar ett dokument och ger meningar olika färger beroende på vilken typ av mening det är. PrettyPrinter tar det dokument som det ska behandla som en parameter i konstruktorn. Den består av privata metoder som implementerar funktionalliteten och en privat metod för att visa resultatet.
+
+ **Tokenizer** - Denna komponent tar en grammat och en text och skapar tokens utav det. 
+
  Komponenterna sammanställs i Parser, och i app.js kör man koden, där skriver man in den text som ska parsas. Här kan man välja metoder från parser.js för att parsa texten. Konstruktorn i Parser skapar alla objekt som behövs för att samtliga komponenter ska fungera.
 
  * Beskriv hur du anpassat din kod och instruktioner för att någon annan programmerare skall kunna använda dina komponenter. Om du skrivit instruktioner för din användare länka till dessa. Om inte beskriv här hur någon skall göra. 
 
+Denna applikation körs i app.js genom att skriva **npm start**. 
+
+Samtliga objekt som krävs för applikationen skapas i Parser, här skapas Tokenizer med grammatik och TokenTypes. Här skapas även objekten för de olika Sentence, samt Sentences och Document objektet. 
+
+Metoderna i Parse är publika och ska användas för att parsa ett dokument. Som parameter till metoderna skriver man in den text som ska parsas.
+
+
  * Beskriv hur du säkerhetställt att beroendena mellan komponenterna är som beskrivs i laborationen. 
+  - Tokenizern är fortsatt oberoende av utomstående kod.
+  - Parsern beror på Tokenizern, detta visas genom att de objekt som hanterar parsning tar tokenizern som parameter i konstruktorn. Funktionalliteten till parsen bygger på data som fås av Tokenizern.
+  - PrettyPrinter beror på Parser, för att PrettyPrinter ska kunna fungera behövs ett Document som returneras från Parsern.
 
 ## Beskrivning av min kod
 Beskriv din kod på en hög abstraktionsnivå. En kort beskrivning av dina viktigaste klasser och metoder i dina komponenter. Skapa gärna ett klassdiagram som bild. Beskriv relationerna mellan klasserna mellan komponenter.
+
+Samtliga komponenter är beronde av Tokenizer
 
 ## Hur jag testat
 Beskriv hur du kommit fram till om din kod fungerar. Beskriv de olika delarna och hur de testats. Screenshots från manuell testning.
