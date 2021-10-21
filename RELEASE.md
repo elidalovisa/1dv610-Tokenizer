@@ -71,6 +71,13 @@ Samtliga komponenter bortsett från PrettyPrinter är beronde av Tokenizer. Vad 
 - Tokenizer
 Då de bygger på varandra och krävs för att applikationen ska fungera.
 
+Relationerna mellan klasserna är som följande:
+- Sentence -> Dependency till Tokenizer
+- Sentences -> Dependency till Tokenizer och Sentence (Dot, Question, Explanation)
+- Document -> Dependency till Tokenizer och Sentences
+- PrettyPrinter -> Dependency till Document
+- Parser -> Association till Tokenizer, Sentence (Dot, Question, Explanation), Sentences, Document.
+
 Viktiga metoder anser jag är följande:
 - _parseSentence och _createSentenceObj, detta för att de utgör en grundpelare för resten av funktionalliteten i appliaktionen. Här skapas ett objekt som efterfågas i Sentences och Document.
 
